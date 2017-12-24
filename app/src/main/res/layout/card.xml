@@ -12,32 +12,60 @@
         android:id="@+id/cv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:cardBackgroundColor="@color/cardview_shadow_start_color"
-        app:cardCornerRadius="4dp"
+        android:layout_margin="0dp"
+        app:cardBackgroundColor="@color/colorAccent"
+        app:cardCornerRadius="0dp"
         app:cardElevation="0dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp">
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/icon"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="15dp"
+                app:srcCompat="@mipmap/ic_launcher"/>
 
             <TextView
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:text="name"
-                android:textSize="30sp"/>
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/icon"
+                android:text="name"/>
 
             <TextView
                 android:id="@+id/price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="price"/>
+
+            <TextView
+                android:id="@+id/profit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:text="price"
-                android:textSize="30sp"/>
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:text="profit"/>
+
+            <TextView
+                android:id="@+id/total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/profit"
+                android:layout_marginRight="10dp"
+                android:text="total"
+                android:textSize="9dp"/>
 
         </RelativeLayout>
 

@@ -3,10 +3,10 @@ package com.bitprofit.mono.bitprofit;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.widget.TextView;
 import android.support.v7.widget.RecyclerView;
-import java.util.List;
+
+import com.bitprofit.mono.bitprofit.async.FetchData;
 
 public class MainActivity extends AppCompatActivity{
 

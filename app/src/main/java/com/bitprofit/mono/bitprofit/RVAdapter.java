@@ -6,7 +6,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bitprofit.mono.bitprofit.async.FetchImage;
 
 import java.util.List;
 
@@ -43,6 +46,13 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CurrencyViewHolder
 	public void onBindViewHolder(CurrencyViewHolder currencyViewHolder, int i){
 		currencyViewHolder.name.setText(currencies.get(i).name);
 		currencyViewHolder.price.setText("$"+currencies.get(i).price);
+		currencyViewHolder.total.setText("$"+currencies.get(i).total);
+		currencyViewHolder.profit.setText("$"+currencies.get(i).profit);
+		//ASyncTask FetchImage will update the image if it hasn't finished
+		if(currencies.get(i).icon==null)
+			currencies.get(i).needsReload(currencyViewHolder.image);
+		else
+			currencyViewHolder.image.setImageDrawable(currencies.get(i).icon);
 	}
 
 	@Override
@@ -55,13 +65,17 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CurrencyViewHolder
 	 */
 	public static class CurrencyViewHolder extends RecyclerView.ViewHolder{
 		CardView cv;
-		TextView name,price;
+		TextView name,price,total,profit;
+		ImageView image;
 
 		CurrencyViewHolder(View itemView){
 			super(itemView);
 			cv = (CardView)itemView.findViewById(R.id.cv);
 			name = (TextView)itemView.findViewById(R.id.name);
 			price = (TextView)itemView.findViewById(R.id.price);
+			total = (TextView)itemView.findViewById(R.id.total);
+			profit = (TextView)itemView.findViewById(R.id.profit);
+			image = (ImageView)itemView.findViewById(R.id.icon);
 		}
 	}
 }

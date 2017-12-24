@@ -1,6 +1,9 @@
-package com.bitprofit.mono.bitprofit;
+package com.bitprofit.mono.bitprofit.async;
 
 import android.os.AsyncTask;
+
+import com.bitprofit.mono.bitprofit.Currency;
+import com.bitprofit.mono.bitprofit.MainActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,8 +25,6 @@ import java.util.ArrayList;
 public class FetchData extends AsyncTask<Void,Void,Void>{
 
 	String data = "";
-	String dataParsed = "";
-	String singleParsed = "";
 	ArrayList<Currency> currencies;
 	@Override
 	protected Void doInBackground(Void... voids){
@@ -43,23 +44,10 @@ public class FetchData extends AsyncTask<Void,Void,Void>{
 			JSONArray JA = new JSONArray(data);
 			for(int i=0;i<JA.length();i++){
 				JSONObject JO = (JSONObject)JA.get(i);
-				singleParsed = "Name: " + JO.get("name") +"\n" +
-						"Symbol: " + JO.get("symbol") +"\n" +
-						"Price: " + JO.get("price_usd") +"\n" +
-						"Change: " + JO.get("percent_change_1h") +"\n";
-				dataParsed += "\n"+singleParsed;
-				String name = ""+JO.get("name");
-				String symbol = ""+JO.get("symbol");
-				String tempPrice = ""+JO.get("price_usd");
-				double price = Double.parseDouble(tempPrice);
-				Currency.addCurrency(name,symbol,price);
+				addCurrency(JO);
 			}
 
-		}catch(MalformedURLException e){
-			e.printStackTrace();
-		}catch(IOException e){
-			e.printStackTrace();
-		}catch(JSONException e){
+		}catch(Exception e){
 			e.printStackTrace();
 		}
 		return null;
@@ -69,5 +57,35 @@ public class FetchData extends AsyncTask<Void,Void,Void>{
 	protected void onPostExecute(Void aVoid){
 		super.onPostExecute(aVoid);
 		MainActivity.resetRecycleView();
+	}
+
+	private void addCurrency(JSONObject JO){
+		try{
+			String name = ""+JO.get("name");
+			String symbol = ""+JO.get("symbol");
+			String tempPrice = ""+JO.get("price_usd");
+			double price = Double.parseDouble(tempPrice);
+
+			double initial = 400;
+			double coins = .01;
+
+			double total = price*coins;
+			double profit = total - initial;
+
+			price = roundToTwoDecimal(price);
+			total = roundToTwoDecimal(total);
+			profit = roundToTwoDecimal(profit);
+
+			Currency.addCurrency(name,symbol,price,total,profit);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+
+	private double roundToTwoDecimal(double num){
+		num *= 100;
+		num = Math.round(num);
+		num /= 100;
+		return num;
 	}
 }
