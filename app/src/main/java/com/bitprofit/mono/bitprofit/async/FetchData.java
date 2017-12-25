@@ -29,7 +29,7 @@ public class FetchData extends AsyncTask<Void,Void,Void>{
 	@Override
 	protected Void doInBackground(Void... voids){
 		try{
-			URL url = new URL("https://api.coinmarketcap.com/v1/ticker/");
+			URL url = new URL("https://api.coinmarketcap.com/v1/ticker/?limit=200");
 			HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
 			InputStream inputStream = httpURLConnection.getInputStream();
 			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));

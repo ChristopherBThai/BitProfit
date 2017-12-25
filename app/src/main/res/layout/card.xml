@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="0dp"
-        app:cardBackgroundColor="@color/colorAccent"
+        app:cardBackgroundColor="@color/opaque"
         app:cardCornerRadius="0dp"
         app:cardElevation="0dp">
 
@@ -38,7 +38,9 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/icon"
-                android:text="name"/>
+                android:fontFamily="@font/roboto_light"
+                android:text="name"
+                android:textColor="@color/font"/>
 
             <TextView
                 android:id="@+id/price"
@@ -46,7 +48,9 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:text="price"/>
+                android:fontFamily="@font/roboto_light"
+                android:text="price"
+                android:textColor="@color/font"/>
 
             <TextView
                 android:id="@+id/profit"
@@ -55,7 +59,9 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"
-                android:text="profit"/>
+                android:fontFamily="@font/roboto_light"
+                android:text="profit"
+                android:textColor="@color/font"/>
 
             <TextView
                 android:id="@+id/total"
@@ -64,7 +70,9 @@
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/profit"
                 android:layout_marginRight="10dp"
+                android:fontFamily="@font/roboto_light"
                 android:text="total"
+                android:textColor="@color/font"
                 android:textSize="9dp"/>
 
         </RelativeLayout>
