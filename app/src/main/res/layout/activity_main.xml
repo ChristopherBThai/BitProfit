@@ -13,18 +13,78 @@
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/cardview_shadow_start_color">
+        app:cardBackgroundColor="@color/topbar_background"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="11dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:fontFamily="@font/roboto_light"
+            android:paddingBottom="7dp"
+            android:paddingTop="7dp"
             android:text="@string/app_name"
             android:textColor="@color/font"
-            android:textSize="19sp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"/>
+            android:textSize="19sp"/>
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/midbar_background"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="11dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/profitname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:fontFamily="@font/roboto_light"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="Profit"
+                android:textColor="@color/font"
+                android:textSize="19sp"/>
+
+            <TextView
+                android:id="@+id/barprofit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/profitname"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/roboto_light"
+                android:text="+$100.00"
+                android:textColor="@color/font"
+                android:textSize="45sp"/>
+
+            <TextView
+                android:id="@+id/bartotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/barprofit"
+                android:fontFamily="@font/roboto_light"
+                android:paddingBottom="10dp"
+                android:paddingRight="10dp"
+                android:text="$234.52"
+                android:textColor="@color/font"
+                android:textSize="19sp"/>
+
+        </RelativeLayout>
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.RecyclerView
