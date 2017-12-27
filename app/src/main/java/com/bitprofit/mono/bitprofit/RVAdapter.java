@@ -14,6 +14,7 @@ import com.bitprofit.mono.bitprofit.async.FetchImage;
 import java.util.List;
 
 /**
+ * Updates Recycler View
  * Created by Christopher Thai on 12/20/2017.
  */
 

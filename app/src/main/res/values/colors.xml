@@ -7,6 +7,8 @@
     <color name="background_gradient_start">#1d92ed</color>
     <color name="background_gradient_end">#63ddfc</color>
     <color name="font">#ffffff</color>
-    <color name="topbar_background">#92000000</color>
-    <color name="midbar_background">#53000000</color>
+    <color name="topbar_background">#5a000000</color>
+    <color name="midbar_background">#38000000</color>
+    <color name="positive_font">#59be5b</color>
+    <color name="negative_font">#e74b4e</color>
 </resources>

@@ -15,24 +15,25 @@
         android:layout_height="wrap_content"
         app:cardBackgroundColor="@color/topbar_background"
         app:cardCornerRadius="0dp"
-        app:cardElevation="11dp">
+        app:cardElevation="0dp"
+        app:contentPadding="0dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:fontFamily="@font/roboto_light"
-            android:paddingBottom="7dp"
-            android:paddingTop="7dp"
-            android:text="@string/app_name"
-            android:textColor="@color/font"
-            android:textSize="19sp"/>
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/roboto_light"
+                android:paddingBottom="7dp"
+                android:paddingTop="7dp"
+                android:text="@string/app_name"
+                android:textColor="@color/font"
+                android:textSize="19sp"/>
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>
@@ -42,7 +43,9 @@
         android:layout_height="wrap_content"
         app:cardBackgroundColor="@color/midbar_background"
         app:cardCornerRadius="0dp"
-        app:cardElevation="11dp">
+        app:cardElevation="0dp"
+        app:contentPadding="0dp">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -68,7 +71,7 @@
                 android:layout_centerVertical="true"
                 android:fontFamily="@font/roboto_light"
                 android:text="+$100.00"
-                android:textColor="@color/font"
+                android:textColor="@color/positive_font"
                 android:textSize="45sp"/>
 
             <TextView

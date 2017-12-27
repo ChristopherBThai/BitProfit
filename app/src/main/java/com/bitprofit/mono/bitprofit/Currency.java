@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Variables to display onto the screen
  * Created by Christopher Thai on 12/20/2017.
  */
 
