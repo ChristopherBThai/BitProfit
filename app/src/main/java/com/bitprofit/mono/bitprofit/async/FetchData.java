@@ -1,6 +1,7 @@
 package com.bitprofit.mono.bitprofit.async;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.bitprofit.mono.bitprofit.Currency;
 import com.bitprofit.mono.bitprofit.MainActivity;
@@ -24,9 +25,14 @@ import java.util.ArrayList;
 public class FetchData extends AsyncTask<Void,Void,Void>{
 
 	private double total=0,totalProfit=0,totalInitial=0;
+	private static boolean inUse = false;
+	private boolean success = false;
 
 	@Override
 	protected Void doInBackground(Void... voids){
+		if(inUse)
+			return null;
+		inUse = true;
 		while(Var.inUse);
 		Var.lock();
 		for(Var.Coin c : Var.coins){
@@ -35,14 +41,18 @@ public class FetchData extends AsyncTask<Void,Void,Void>{
 		}
 		Var.unlock();
 		totalProfit = total - totalInitial;
+		success = true;
 		return null;
 	}
 
 	@Override
 	protected void onPostExecute(Void aVoid){
 		super.onPostExecute(aVoid);
+		if(!success)
+			return;
 		MainActivity.resetRecycleView();
 		MainActivity.setTotalProfit(roundToTwoDecimal(total),roundToTwoDecimal(totalProfit));
+		inUse = false;
 	}
 
 	private void grabInfo(Var.Coin coin){
@@ -87,7 +97,7 @@ public class FetchData extends AsyncTask<Void,Void,Void>{
 			total = roundToTwoDecimal(total);
 			profit = roundToTwoDecimal(profit);
 
-			Currency.addCurrency(name,symbol,price,total,profit);
+			Currency.updateCurrency(name,symbol,price,total,profit);
 		}catch(Exception e){
 			e.printStackTrace();
 		}

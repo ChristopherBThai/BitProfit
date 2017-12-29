@@ -36,14 +36,26 @@ public class MainActivity extends AppCompatActivity{
 		Var.addCoin("bitcoin",.01018814,150);
 		Var.addCoin("ethereum",.21102305,100.12);
 		Var.addCoin("litecoin",1.55290242,400);
+		Var.addCoin("raiblocks ",13.89999000 ,150);
+		Var.addCoin("verify",39.966,50);
+		Var.addCoin("bounty0x",239.7678921,50);
 		Var.addCoin("cardano",50,10.9466612378);
 		Var.addCoin("ripple",20,16.1084172342);
 		Var.addCoin("dogecoin",2000,18.882434);
 		Var.addCoin("reddcoin",1755.52958824,19.062553);
 
-		FetchData process = new FetchData();
-		process.execute();
+	}
 
+	@Override
+	protected void onResume(){
+		super.onResume();
+		Updater.start(60000);
+	}
+
+	@Override
+	protected void onPause(){
+		super.onPause();
+		Updater.stop();
 	}
 
 	protected void initRecyclerView(){

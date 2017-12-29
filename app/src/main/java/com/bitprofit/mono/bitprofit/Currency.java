@@ -1,11 +1,13 @@
 package com.bitprofit.mono.bitprofit;
 
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.widget.ImageView;
 
 import com.bitprofit.mono.bitprofit.async.FetchImage;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -50,10 +52,27 @@ public class Currency{
 		this.needsReload = false;
 	}
 
-	private static List<Currency> currencies;
+	private static ArrayList<Currency> currencies;
+	private static HashMap<String,Currency> hashCurrencies;
 
 	public static void initializeData(){
 		currencies = new ArrayList<>();
+		hashCurrencies = new HashMap<String,Currency>();
+	}
+
+	public static void updateCurrency(String name, String symbol, double price, double total, double profit){
+		Log.i("BitProfit","Updating "+name+" to: "+price);
+		if(hashCurrencies.containsKey(name)){
+			Currency c = hashCurrencies.get(name);
+			c.name = name;
+			c.symbol = symbol;
+			c.price = price;
+			c.total = total;
+			c.profit = profit;
+		}else{
+			addCurrency(name,symbol,price,total,profit);
+		}
+
 	}
 
 	public static void addCurrency(String name, String symbol, double price, double total, double profit){
@@ -61,6 +80,7 @@ public class Currency{
 		FetchImage fImage = new FetchImage(c);
 		fImage.execute();
 		currencies.add(c);
+		hashCurrencies.put(name,c);
 	}
 
 	public static List<Currency> getCurrencies(){
