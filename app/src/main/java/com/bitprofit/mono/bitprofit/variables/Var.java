@@ -10,6 +10,7 @@ public class Var{
 	public static boolean inUse = false;
 	public static ArrayList<Coin> coins = new ArrayList<Coin>();
 	public static double total,totalProfit;
+	public static final String FILENAME = "save.json";
 	public static class Coin{
 		public String name;
 		public double coins,initial;

@@ -15,7 +15,6 @@ import java.io.OutputStreamWriter;
 
 public class WriteJson extends AsyncTask<Void,Void,Void>{
 
-	public final String FILENAME = "save.json";
 	FileOutputStream out;
 
 	public WriteJson(FileOutputStream out){

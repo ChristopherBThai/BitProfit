@@ -29,6 +29,11 @@ public class Updater{
 		handler.removeCallbacksAndMessages(null);
 	}
 
+	public static void restart(){
+		stop();
+		start(delay);
+	}
+
 	private static void fetch(){
 		FetchData process = new FetchData();
 		process.execute();

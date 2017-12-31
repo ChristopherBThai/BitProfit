@@ -10,12 +10,13 @@ import android.widget.TextView;
 import android.support.v7.widget.RecyclerView;
 
 import com.bitprofit.mono.bitprofit.async.FetchData;
+import com.bitprofit.mono.bitprofit.async.ReadJson;
 import com.bitprofit.mono.bitprofit.async.WriteJson;
 import com.bitprofit.mono.bitprofit.variables.Var;
 
-public class MainActivity extends AppCompatActivity{
+import java.io.FileInputStream;
 
-	public static final String FILENAME = "save.json";
+public class MainActivity extends AppCompatActivity{
 
 	public static TextView total, totalProfit;
 	private static RecyclerView recycle;
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity{
 		Var.addCoin("verify",39.966,50);
 		Var.addCoin("bounty0x",239.7678921,50);
 		Var.addCoin("cardano",50,10.9466612378);
-		Var.addCoin("ripple",20,16.1084172342);
+		Var.addCoin("ripple",61.11809925,116.1084172342);
 		Var.addCoin("dogecoin",2000,18.882434);
 		Var.addCoin("reddcoin",1755.52958824,19.062553);
 
@@ -69,11 +70,20 @@ public class MainActivity extends AppCompatActivity{
 
 	public void save(){
 		try{
-			WriteJson write = new WriteJson(openFileOutput(FILENAME, Context.MODE_PRIVATE));
+			WriteJson write = new WriteJson(openFileOutput(Var.FILENAME, Context.MODE_PRIVATE));
 			write.execute();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+	}
+
+	public void load(){
+		try{
+			ReadJson read = new ReadJson(openFileInput(Var.FILENAME));
+		}catch(Exception e){
+
+		}
+
 	}
 
 	public static void resetRecycleView(){
