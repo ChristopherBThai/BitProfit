@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
+    android:orientation="vertical"
+    tools:context="com.bitprofit.mono.bitprofit.MainActivity">
+
+    <EditText
+        android:id="@+id/search_search"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/search_back"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="13dp"
+        android:fontFamily="@font/roboto_light"
+        android:inputType="text"
+        android:selectAllOnFocus="false"
+        android:singleLine="false"
+        android:text="Search CryptoCurrency"
+        android:background="@null"
+        android:textColor="@color/font"/>
+
+    <View
+        android:id="@+id/search_line"
+        android:layout_width="300dp"
+        android:layout_height="2dp"
+        android:layout_below="@+id/search_search"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="2dp"
+        android:background="@color/font"/>
+
+    <Button
+        android:id="@+id/search_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/opaque"
+        android:fontFamily="@font/roboto_light"
+        android:text="BACK"
+        android:textColor="@color/font"/>
+</RelativeLayout>
