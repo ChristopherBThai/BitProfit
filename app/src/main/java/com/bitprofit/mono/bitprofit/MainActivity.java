@@ -50,6 +50,8 @@ public class MainActivity extends AppCompatActivity{
 		Var.addCoin("bounty0x",239.7678921,50);
 		Var.addCoin("cardano",50,10.9466612378);
 		Var.addCoin("ripple",61.11809925,116.1084172342);
+		Var.addCoin("dragonchain",18.934047,50);
+		Var.addCoin("tron",308.691,50);
 		Var.addCoin("dogecoin",2000,18.882434);
 		Var.addCoin("reddcoin",1755.52958824,19.062553);
 
@@ -124,9 +126,9 @@ public class MainActivity extends AppCompatActivity{
 		//getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
 	}
 
-	public static void setTotalProfit(double total,double totalProfit){
-		MainActivity.total.setText("$"+total);
-		MainActivity.totalProfit.setText("$"+totalProfit);
+	public static void setTotalProfit(String total,String totalProfit){
+		MainActivity.total.setText(total);
+		MainActivity.totalProfit.setText(totalProfit);
 	}
 }
 

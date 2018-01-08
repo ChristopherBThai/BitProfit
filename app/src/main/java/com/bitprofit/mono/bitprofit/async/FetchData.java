@@ -51,7 +51,7 @@ public class FetchData extends AsyncTask<Void,Void,Void>{
 		if(!success)
 			return;
 		MainActivity.resetRecycleView();
-		MainActivity.setTotalProfit(roundToTwoDecimal(total),roundToTwoDecimal(totalProfit));
+		MainActivity.setTotalProfit(toDollars(total),toDollars(totalProfit));
 		inUse = false;
 	}
 
@@ -93,20 +93,19 @@ public class FetchData extends AsyncTask<Void,Void,Void>{
 			double profit = total - initial;
 			this.total += total;
 
-			price = roundToTwoDecimal(price);
-			total = roundToTwoDecimal(total);
-			profit = roundToTwoDecimal(profit);
+			String priceS = toDollars(price);
+			String totalS = toDollars(total);
+			String profitS = toDollars(profit);
 
-			Currency.updateCurrency(name,symbol,price,total,profit);
+			Currency.updateCurrency(name,symbol,priceS,totalS,profitS);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 	}
 
-	private double roundToTwoDecimal(double num){
-		num *= 100;
-		num = Math.round(num);
-		num /= 100;
-		return num;
+	private String toDollars(double num){
+		if(num<1)
+			return String.format("$%,.5f",num);
+		return String.format("$%,.2f",num);
 	}
 }

@@ -17,12 +17,12 @@ import java.util.List;
 
 public class Currency{
 	String name,symbol;
-	double price,total,profit;
+	String price,total,profit;
 	Drawable icon;
 	public boolean needsReload;
 	ImageView imageView;
 
-	Currency(String name, String symbol, double price, double total, double profit){
+	Currency(String name, String symbol, String price, String total, String profit){
 		this.name = name;
 		this.symbol = symbol;
 		this.price = price;
@@ -60,7 +60,7 @@ public class Currency{
 		hashCurrencies = new HashMap<String,Currency>();
 	}
 
-	public static void updateCurrency(String name, String symbol, double price, double total, double profit){
+	public static void updateCurrency(String name, String symbol, String price, String total, String profit){
 		Log.i("BitProfit","Updating "+name+" to: "+price);
 		if(hashCurrencies.containsKey(name)){
 			Currency c = hashCurrencies.get(name);
@@ -75,7 +75,7 @@ public class Currency{
 
 	}
 
-	public static void addCurrency(String name, String symbol, double price, double total, double profit){
+	public static void addCurrency(String name, String symbol, String price, String total, String profit){
 		Currency c = new Currency(name,symbol,price,total, profit);
 		FetchImage fImage = new FetchImage(c);
 		fImage.execute();
