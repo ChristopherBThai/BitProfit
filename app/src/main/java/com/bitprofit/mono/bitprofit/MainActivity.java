@@ -17,17 +17,21 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.support.v7.widget.RecyclerView;
 
+import com.bitprofit.mono.bitprofit.async.FetchCurrencies;
 import com.bitprofit.mono.bitprofit.async.ReadJson;
 import com.bitprofit.mono.bitprofit.async.WriteJson;
 import com.bitprofit.mono.bitprofit.variables.Var;
 
 import java.io.FileInputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity{
 
 	public static TextView total, totalProfit;
-	private static RecyclerView recycle;
+	private static RecyclerView recycle,currencyList;
 	private static RVAdapter adapter;
+	private static RVACurrency currencyAdapter;
 	RelativeLayout adder;
 	private static ViewGroup decor;
 
@@ -40,6 +44,7 @@ public class MainActivity extends AppCompatActivity{
 		total = (TextView) findViewById(R.id.bartotal);
 		totalProfit = (TextView) findViewById(R.id.barprofit);
 		recycle = (RecyclerView) findViewById(R.id.rv);
+		currencyList = (RecyclerView) findViewById(R.id.search_list);
 
 		initRecyclerView();
 
@@ -75,7 +80,7 @@ public class MainActivity extends AppCompatActivity{
 		});
 
 		SearchView searchView = (SearchView)findViewById(R.id.search_search);
-		searchView.setIconifiedByDefault(false);
+		initSearchView(searchView);
 
 	}
 
@@ -91,6 +96,22 @@ public class MainActivity extends AppCompatActivity{
 		Updater.stop();
 	}
 
+	protected void initSearchView(SearchView searchView){
+		searchView.setIconifiedByDefault(false);
+		searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
+			@Override
+			public boolean onQueryTextSubmit(String query){
+				return false;
+			}
+
+			@Override
+			public boolean onQueryTextChange(String newText){
+				return false;
+			}
+		});
+
+	}
+
 	protected void initRecyclerView(){
 		LinearLayoutManager llm = new LinearLayoutManager(this);
 		adapter = new RVAdapter(Currency.getCurrencies());
@@ -98,6 +119,15 @@ public class MainActivity extends AppCompatActivity{
 		recycle.setHasFixedSize(true);
 		recycle.setLayoutManager(llm);
 		recycle.setAdapter(adapter);
+
+		LinearLayoutManager llm2 = new LinearLayoutManager(this);
+		currencyAdapter = new RVACurrency(Var.availableCoins);
+		FetchCurrencies fetch = new FetchCurrencies();
+		fetch.execute();
+
+		currencyList.setHasFixedSize(true);
+		currencyList.setLayoutManager(llm2);
+		currencyList.setAdapter(currencyAdapter);
 	}
 
 	public void save(){
@@ -122,6 +152,11 @@ public class MainActivity extends AppCompatActivity{
 	public static void resetRecycleView(){
 		if(adapter != null)
 			adapter.notifyDataSetChanged();
+	}
+
+	public static void resetAvailableCurrencyRecycleView(){
+		if(currencyAdapter!= null)
+			currencyAdapter.notifyDataSetChanged();
 	}
 
 	public void removeStatusBar(){

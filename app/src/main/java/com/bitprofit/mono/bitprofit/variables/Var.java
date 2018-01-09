@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class Var{
 	public static boolean inUse = false;
 	public static ArrayList<Coin> coins = new ArrayList<Coin>();
+	public static ArrayList<AvailableCoin> availableCoins = new ArrayList<>();
 	public static double total,totalProfit;
 	public static final String FILENAME = "save.json";
 	public static class Coin{
@@ -31,5 +32,17 @@ public class Var{
 
 	public static void unlock(){
 		inUse = false;
+	}
+
+	public static class AvailableCoin{
+		public String name,abb;
+		AvailableCoin(String name,String abb){
+			this.name = name;
+			this.abb = abb;
+		}
+	}
+
+	public static void addAvailableCoin(String name,String abb){
+		Var.availableCoins.add(new AvailableCoin(name,abb));
 	}
 }

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical"
+tools:context="com.bitprofit.mono.bitprofit.MainActivity">
+
+<android.support.v7.widget.CardView
+    android:id="@+id/cv"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="0dp"
+    app:cardBackgroundColor="@color/opaque"
+    app:cardCornerRadius="0dp"
+    app:cardElevation="0dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/roboto_light"
+            android:text="name"
+            android:textColor="@color/font"
+            android:textSize="24sp"/>
+
+        <TextView
+            android:id="@+id/abb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/leftP"
+            android:fontFamily="@font/roboto_light"
+            android:text="abb"
+            android:textColor="@color/font"
+            android:textSize="24sp"/>
+
+        <TextView
+            android:id="@+id/leftP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/name"
+            android:fontFamily="@font/roboto_light"
+            android:paddingLeft="10dp"
+            android:text="("
+            android:textAlignment="viewEnd"
+            android:textColor="@color/font"
+            android:textSize="24sp"/>
+
+        <TextView
+            android:id="@+id/rightP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/abb"
+            android:fontFamily="@font/roboto_light"
+            android:text=")"
+            android:textColor="@color/font"
+            android:textSize="24sp"/>
+
+    </RelativeLayout>
+
+
+</android.support.v7.widget.CardView>
+
+
+</LinearLayout>

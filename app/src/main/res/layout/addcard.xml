@@ -12,11 +12,13 @@
 
     <android.support.v7.widget.SearchView
         android:id="@id/search_search"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/search_back"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="13dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
         app:defaultQueryHint="Search Currency"
         app:divider="@color/font">
 
@@ -24,8 +26,10 @@
 
     <View
         android:id="@+id/search_line"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="2dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
         android:layout_below="@+id/search_search"
         android:layout_centerHorizontal="true"
         android:background="@color/font"/>
@@ -41,4 +45,12 @@
         android:fontFamily="@font/roboto_light"
         android:text="BACK"
         android:textColor="@color/font"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/search_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/search_search"
+        android:layout_centerHorizontal="true"
+        />
 </RelativeLayout>
