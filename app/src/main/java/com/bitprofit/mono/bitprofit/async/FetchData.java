@@ -104,7 +104,7 @@ public class FetchData extends AsyncTask<Void,Void,Void>{
 	}
 
 	private String toDollars(double num){
-		if(num<1)
+		if(num<1&&num>-1)
 			return String.format("$%,.5f",num);
 		return String.format("$%,.2f",num);
 	}

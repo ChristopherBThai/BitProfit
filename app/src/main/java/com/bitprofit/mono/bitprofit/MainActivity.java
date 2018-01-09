@@ -5,6 +5,7 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.SearchView;
 import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,6 +73,9 @@ public class MainActivity extends AppCompatActivity{
 				adder.setVisibility(View.INVISIBLE);
 			}
 		});
+
+		SearchView searchView = (SearchView)findViewById(R.id.search_search);
+		searchView.setIconifiedByDefault(false);
 
 	}
 

@@ -9,20 +9,18 @@
     android:orientation="vertical"
     tools:context="com.bitprofit.mono.bitprofit.MainActivity">
 
-    <EditText
-        android:id="@+id/search_search"
+
+    <android.support.v7.widget.SearchView
+        android:id="@id/search_search"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/search_back"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="13dp"
-        android:fontFamily="@font/roboto_light"
-        android:inputType="text"
-        android:selectAllOnFocus="false"
-        android:singleLine="false"
-        android:text="Search CryptoCurrency"
-        android:background="@null"
-        android:textColor="@color/font"/>
+        app:defaultQueryHint="Search Currency"
+        app:divider="@color/font">
+
+    </android.support.v7.widget.SearchView>
 
     <View
         android:id="@+id/search_line"
@@ -30,7 +28,6 @@
         android:layout_height="2dp"
         android:layout_below="@+id/search_search"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="2dp"
         android:background="@color/font"/>
 
     <Button
