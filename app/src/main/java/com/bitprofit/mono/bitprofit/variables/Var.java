@@ -10,6 +10,7 @@ public class Var{
 	public static boolean inUse = false;
 	public static ArrayList<Coin> coins = new ArrayList<Coin>();
 	public static ArrayList<AvailableCoin> availableCoins = new ArrayList<>();
+	public static ArrayList<AvailableCoin> selectedCoins = new ArrayList<>();
 	public static double total,totalProfit;
 	public static final String FILENAME = "save.json";
 	public static class Coin{
@@ -39,6 +40,13 @@ public class Var{
 		AvailableCoin(String name,String abb){
 			this.name = name;
 			this.abb = abb;
+		}
+		public boolean contains(String text){
+			if(name.toLowerCase().contains(text.toLowerCase()))
+				return true;
+			if(abb.toLowerCase().contains(text.toLowerCase()))
+				return true;
+			return false;
 		}
 	}
 

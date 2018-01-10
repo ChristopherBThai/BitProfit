@@ -67,4 +67,8 @@ public class RVACurrency extends RecyclerView.Adapter<RVACurrency.CurrencyName>{
 			abb = (TextView)itemView.findViewById(R.id.abb);
 		}
 	}
+
+	public void setCurrencies(List<Var.AvailableCoin> currencies){
+		this.currencies = currencies;
+	}
 }

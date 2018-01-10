@@ -106,6 +106,18 @@ public class MainActivity extends AppCompatActivity{
 
 			@Override
 			public boolean onQueryTextChange(String newText){
+				if(newText.equals("")){
+					currencyAdapter.setCurrencies(Var.availableCoins);
+				}else{
+					Var.selectedCoins.clear();
+					currencyAdapter.setCurrencies(Var.selectedCoins);
+					for(Var.AvailableCoin currency : Var.availableCoins){
+						if(currency.contains(newText)){
+							Var.selectedCoins.add(currency);
+						}
+					}
+				}
+				resetAvailableCurrencyRecycleView();
 				return false;
 			}
 		});

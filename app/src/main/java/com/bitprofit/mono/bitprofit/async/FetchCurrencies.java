@@ -22,7 +22,6 @@ public class FetchCurrencies extends AsyncTask<Void,Void,Void>{
 
 	@Override
 	protected Void doInBackground(Void... voids){
-		BufferedReader reader = null;
 		try{
 			URL url = new URL("http://corg.network:8080/bitprofit/list");
 			HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -37,14 +36,6 @@ public class FetchCurrencies extends AsyncTask<Void,Void,Void>{
 
 		}catch(IOException e){
 			e.printStackTrace();
-		}finally{
-			if(reader!=null){
-				try{
-					reader.close();
-				}catch(IOException e){
-					e.printStackTrace();
-				}
-			}
 		}
 		return null;
 	}
@@ -54,4 +45,5 @@ public class FetchCurrencies extends AsyncTask<Void,Void,Void>{
 		super.onPostExecute(aVoid);
 		MainActivity.resetAvailableCurrencyRecycleView();
 	}
+
 }
