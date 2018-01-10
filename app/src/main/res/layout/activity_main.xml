@@ -136,4 +136,9 @@
         layout="@layout/addcard"
         android:visibility="invisible"/>
 
+    <include
+        android:id="@+id/addcard2"
+        layout="@layout/addcard_2"
+        android:visibility="invisible"/>
+
 </FrameLayout>

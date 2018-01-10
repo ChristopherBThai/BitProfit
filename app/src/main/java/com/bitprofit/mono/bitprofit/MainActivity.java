@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity{
 	private static RecyclerView recycle,currencyList;
 	private static RVAdapter adapter;
 	private static RVACurrency currencyAdapter;
-	RelativeLayout adder;
+	RelativeLayout adder,adder2;
 	private static ViewGroup decor;
 
 	@Override
@@ -61,26 +61,8 @@ public class MainActivity extends AppCompatActivity{
 		Var.addCoin("dogecoin",2000,18.882434);
 		Var.addCoin("reddcoin",1755.52958824,19.062553);
 
-
-		adder = (RelativeLayout)findViewById(R.id.addcard);
-		Button button = (Button)findViewById(R.id.add);
-		button.setOnClickListener(new View.OnClickListener(){
-			@Override
-			public void onClick(View view){
-				adder.setVisibility(View.VISIBLE);
-			}
-		});
-
-		button = (Button)findViewById(R.id.search_back);
-		button.setOnClickListener(new View.OnClickListener(){
-			@Override
-			public void onClick(View view){
-				adder.setVisibility(View.INVISIBLE);
-			}
-		});
-
-		SearchView searchView = (SearchView)findViewById(R.id.search_search);
-		initSearchView(searchView);
+		initButtons();
+		initSearchView();
 
 	}
 
@@ -96,7 +78,8 @@ public class MainActivity extends AppCompatActivity{
 		Updater.stop();
 	}
 
-	protected void initSearchView(SearchView searchView){
+	protected void initSearchView(){
+		SearchView searchView = (SearchView)findViewById(R.id.search_search);
 		searchView.setIconifiedByDefault(false);
 		searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
 			@Override
@@ -133,13 +116,45 @@ public class MainActivity extends AppCompatActivity{
 		recycle.setAdapter(adapter);
 
 		LinearLayoutManager llm2 = new LinearLayoutManager(this);
-		currencyAdapter = new RVACurrency(Var.availableCoins);
+		currencyAdapter = new RVACurrency(Var.availableCoins,(RelativeLayout)findViewById(R.id.addcard2),(RelativeLayout)findViewById(R.id.addcard));
 		FetchCurrencies fetch = new FetchCurrencies();
 		fetch.execute();
 
 		currencyList.setHasFixedSize(true);
 		currencyList.setLayoutManager(llm2);
 		currencyList.setAdapter(currencyAdapter);
+	}
+
+	protected void initButtons(){
+		adder = (RelativeLayout)findViewById(R.id.addcard);
+		Button button = (Button)findViewById(R.id.add);
+		//First + button
+		button.setOnClickListener(new View.OnClickListener(){
+			@Override
+			public void onClick(View view){
+				adder.setVisibility(View.VISIBLE);
+			}
+		});
+
+		//Fist back button
+		button = (Button)findViewById(R.id.search_back);
+		button.setOnClickListener(new View.OnClickListener(){
+			@Override
+			public void onClick(View view){
+				adder.setVisibility(View.INVISIBLE);
+			}
+		});
+
+		//Second back button
+		adder2 = (RelativeLayout)findViewById(R.id.addcard2);
+		button = (Button)findViewById(R.id.search2_back);
+		button.setOnClickListener(new View.OnClickListener(){
+			@Override
+			public void onClick(View view){
+				adder2.setVisibility(View.INVISIBLE);
+				adder.setVisibility(View.VISIBLE);
+			}
+		});
 	}
 
 	public void save(){

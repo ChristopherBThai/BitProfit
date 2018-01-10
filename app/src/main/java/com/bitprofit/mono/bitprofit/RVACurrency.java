@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bitprofit.mono.bitprofit.variables.Var;
@@ -21,13 +22,16 @@ import java.util.List;
 public class RVACurrency extends RecyclerView.Adapter<RVACurrency.CurrencyName>{
 
 	List<Var.AvailableCoin> currencies;
+	static RelativeLayout nextLayout,currentLayout;
 
 	/**
 	 * RecyclerView Adapter that will set the cards
 	 * @param currencies The currencies that will be shown
 	 */
-	RVACurrency(List<Var.AvailableCoin> currencies){
+	RVACurrency(List<Var.AvailableCoin> currencies, RelativeLayout nLayout,RelativeLayout cLayout){
 		this.currencies = currencies;
+		this.nextLayout = nLayout;
+		this.currentLayout = cLayout;
 	}
 
 	@Override
@@ -65,6 +69,15 @@ public class RVACurrency extends RecyclerView.Adapter<RVACurrency.CurrencyName>{
 			cv = (CardView)itemView.findViewById(R.id.cv);
 			name = (TextView)itemView.findViewById(R.id.name);
 			abb = (TextView)itemView.findViewById(R.id.abb);
+			cv.setOnClickListener(new View.OnClickListener(){
+				@Override
+				public void onClick(View view){
+					nextLayout.setVisibility(View.VISIBLE);
+					currentLayout.setVisibility(View.INVISIBLE);
+					((TextView)nextLayout.findViewById(R.id.search2_name)).setText(name.getText());
+					((TextView)nextLayout.findViewById(R.id.search2_symbol)).setText(abb.getText());
+				}
+			});
 		}
 	}
 

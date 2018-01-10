@@ -13,6 +13,8 @@ tools:context="com.bitprofit.mono.bitprofit.MainActivity">
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="0dp"
+    android:clickable="true"
+    android:focusable="true"
     app:cardBackgroundColor="@color/opaque"
     app:cardCornerRadius="0dp"
     app:cardElevation="0dp">
@@ -32,7 +34,7 @@ tools:context="com.bitprofit.mono.bitprofit.MainActivity">
             android:fontFamily="@font/roboto_light"
             android:text="name"
             android:textColor="@color/font"
-            android:textSize="24sp"/>
+            android:textSize="20sp"/>
 
         <TextView
             android:id="@+id/abb"
@@ -43,7 +45,7 @@ tools:context="com.bitprofit.mono.bitprofit.MainActivity">
             android:fontFamily="@font/roboto_light"
             android:text="abb"
             android:textColor="@color/font"
-            android:textSize="24sp"/>
+            android:textSize="20sp"/>
 
         <TextView
             android:id="@+id/leftP"
@@ -56,7 +58,7 @@ tools:context="com.bitprofit.mono.bitprofit.MainActivity">
             android:text="("
             android:textAlignment="viewEnd"
             android:textColor="@color/font"
-            android:textSize="24sp"/>
+            android:textSize="20sp"/>
 
         <TextView
             android:id="@+id/rightP"
@@ -67,7 +69,7 @@ tools:context="com.bitprofit.mono.bitprofit.MainActivity">
             android:fontFamily="@font/roboto_light"
             android:text=")"
             android:textColor="@color/font"
-            android:textSize="24sp"/>
+            android:textSize="20sp"/>
 
     </RelativeLayout>
 

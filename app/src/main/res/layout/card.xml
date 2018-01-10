@@ -13,6 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="0dp"
+        android:clickable="true"
+        android:focusable="true"
         app:cardBackgroundColor="@color/opaque"
         app:cardCornerRadius="0dp"
         app:cardElevation="0dp">
