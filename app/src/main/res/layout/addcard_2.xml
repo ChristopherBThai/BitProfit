@@ -23,8 +23,8 @@
 
     <ImageView
         android:id="@+id/search2_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/search2_back"
         app:srcCompat="@mipmap/ic_launcher"/>

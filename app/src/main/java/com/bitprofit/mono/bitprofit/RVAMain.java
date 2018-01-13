@@ -9,8 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bitprofit.mono.bitprofit.async.FetchImage;
-
 import java.util.List;
 
 /**
@@ -18,7 +16,7 @@ import java.util.List;
  * Created by Christopher Thai on 12/20/2017.
  */
 
-public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CurrencyViewHolder>{
+public class RVAMain extends RecyclerView.Adapter<RVAMain.CurrencyViewHolder>{
 
 	List<Currency> currencies;
 
@@ -26,7 +24,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CurrencyViewHolder
 	 * RecyclerView Adapter that will set the cards
 	 * @param currencies The currencies that will be shown
 	 */
-	RVAdapter(List<Currency> currencies){
+	RVAMain(List<Currency> currencies){
 		this.currencies = currencies;
 	}
 

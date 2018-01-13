@@ -1,12 +1,12 @@
 package com.bitprofit.mono.bitprofit;
 
 /**
+ * Recycler view adapter for all the list of currencies
  * Created by Christopher Thai on 1/9/2018.
  */
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,21 +14,24 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bitprofit.mono.bitprofit.async.FetchCurrencyListImage;
 import com.bitprofit.mono.bitprofit.variables.Var;
 
 import java.util.List;
 
 
-public class RVACurrency extends RecyclerView.Adapter<RVACurrency.CurrencyName>{
+public class RVACurrencyList extends RecyclerView.Adapter<RVACurrencyList.CurrencyName>{
 
 	List<Var.AvailableCoin> currencies;
 	static RelativeLayout nextLayout,currentLayout;
 
 	/**
-	 * RecyclerView Adapter that will set the cards
-	 * @param currencies The currencies that will be shown
+	 * RecyclerView Adapter for adding currencies
+	 * @param cLayout current layout
+	 * @param nLayout next layout
+	 * @param currencies list of available currencies
 	 */
-	RVACurrency(List<Var.AvailableCoin> currencies, RelativeLayout nLayout,RelativeLayout cLayout){
+	RVACurrencyList(List<Var.AvailableCoin> currencies, RelativeLayout nLayout, RelativeLayout cLayout){
 		this.currencies = currencies;
 		this.nextLayout = nLayout;
 		this.currentLayout = cLayout;
@@ -63,6 +66,8 @@ public class RVACurrency extends RecyclerView.Adapter<RVACurrency.CurrencyName>{
 	public static class CurrencyName extends RecyclerView.ViewHolder{
 		CardView cv;
 		TextView name,abb;
+		static FetchCurrencyListImage fetchImage;
+		static ImageView imageView;
 
 		CurrencyName(View itemView){
 			super(itemView);
@@ -76,8 +81,19 @@ public class RVACurrency extends RecyclerView.Adapter<RVACurrency.CurrencyName>{
 					currentLayout.setVisibility(View.INVISIBLE);
 					((TextView)nextLayout.findViewById(R.id.search2_name)).setText(name.getText());
 					((TextView)nextLayout.findViewById(R.id.search2_symbol)).setText(abb.getText());
+					grabImage(name);
 				}
 			});
+		}
+
+		static void grabImage(TextView name){
+			if(fetchImage==null){
+				imageView = ((ImageView) nextLayout.findViewById(R.id.search2_icon));
+			}else{
+				fetchImage.cancel(true);
+			}
+			fetchImage = new FetchCurrencyListImage(name.getText().toString(), imageView);
+			fetchImage.execute();
 		}
 	}
 

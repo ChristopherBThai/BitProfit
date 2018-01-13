@@ -12,6 +12,7 @@ import java.net.URL;
 import java.util.HashMap;
 
 /**
+ * Fetches images for currency in use
  * Created by Christopher Thai on 12/24/2017.
  */
 

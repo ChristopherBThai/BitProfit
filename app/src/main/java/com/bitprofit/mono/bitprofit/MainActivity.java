@@ -1,13 +1,10 @@
 package com.bitprofit.mono.bitprofit;
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.SearchView;
-import android.text.Layout;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -17,21 +14,17 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.support.v7.widget.RecyclerView;
 
-import com.bitprofit.mono.bitprofit.async.FetchCurrencies;
+import com.bitprofit.mono.bitprofit.async.FetchCurrencyList;
 import com.bitprofit.mono.bitprofit.async.ReadJson;
 import com.bitprofit.mono.bitprofit.async.WriteJson;
 import com.bitprofit.mono.bitprofit.variables.Var;
-
-import java.io.FileInputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity{
 
 	public static TextView total, totalProfit;
 	private static RecyclerView recycle,currencyList;
-	private static RVAdapter adapter;
-	private static RVACurrency currencyAdapter;
+	private static RVAMain adapter;
+	private static RVACurrencyList currencyAdapter;
 	RelativeLayout adder,adder2;
 	private static ViewGroup decor;
 
@@ -109,15 +102,15 @@ public class MainActivity extends AppCompatActivity{
 
 	protected void initRecyclerView(){
 		LinearLayoutManager llm = new LinearLayoutManager(this);
-		adapter = new RVAdapter(Currency.getCurrencies());
+		adapter = new RVAMain(Currency.getCurrencies());
 
 		recycle.setHasFixedSize(true);
 		recycle.setLayoutManager(llm);
 		recycle.setAdapter(adapter);
 
 		LinearLayoutManager llm2 = new LinearLayoutManager(this);
-		currencyAdapter = new RVACurrency(Var.availableCoins,(RelativeLayout)findViewById(R.id.addcard2),(RelativeLayout)findViewById(R.id.addcard));
-		FetchCurrencies fetch = new FetchCurrencies();
+		currencyAdapter = new RVACurrencyList(Var.availableCoins,(RelativeLayout)findViewById(R.id.addcard2),(RelativeLayout)findViewById(R.id.addcard));
+		FetchCurrencyList fetch = new FetchCurrencyList();
 		fetch.execute();
 
 		currencyList.setHasFixedSize(true);

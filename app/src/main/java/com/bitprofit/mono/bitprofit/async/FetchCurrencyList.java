@@ -18,7 +18,7 @@ import java.net.URL;
  * Created by Christopher Thai on 1/9/2018.
  */
 
-public class FetchCurrencies extends AsyncTask<Void,Void,Void>{
+public class FetchCurrencyList extends AsyncTask<Void,Void,Void>{
 
 	@Override
 	protected Void doInBackground(Void... voids){
