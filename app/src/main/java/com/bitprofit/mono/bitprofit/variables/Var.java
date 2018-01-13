@@ -53,4 +53,9 @@ public class Var{
 	public static void addAvailableCoin(String name,String abb){
 		Var.availableCoins.add(new AvailableCoin(name,abb));
 	}
+	public static String toDollars(double num){
+		if(num<1&&num>-1)
+			return String.format("$%,.5f",num);
+		return String.format("$%,.2f",num);
+	}
 }

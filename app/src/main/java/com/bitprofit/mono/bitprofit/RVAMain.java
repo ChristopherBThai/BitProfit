@@ -44,9 +44,9 @@ public class RVAMain extends RecyclerView.Adapter<RVAMain.CurrencyViewHolder>{
 	@Override
 	public void onBindViewHolder(CurrencyViewHolder currencyViewHolder, int i){
 		currencyViewHolder.name.setText(currencies.get(i).name);
-		currencyViewHolder.price.setText(currencies.get(i).price);
-		currencyViewHolder.total.setText(currencies.get(i).total);
-		currencyViewHolder.profit.setText(currencies.get(i).profit);
+		currencyViewHolder.price.setText(currencies.get(i).getPrice());
+		currencyViewHolder.total.setText(currencies.get(i).getTotal());
+		currencyViewHolder.profit.setText(currencies.get(i).getProfit());
 		//ASyncTask FetchImage will update the image if it hasn't finished
 		if(currencies.get(i).icon==null)
 			currencies.get(i).needsReload(currencyViewHolder.image);

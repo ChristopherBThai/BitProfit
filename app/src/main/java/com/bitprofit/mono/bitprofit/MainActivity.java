@@ -185,7 +185,9 @@ public class MainActivity extends AppCompatActivity{
 		//getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
 	}
 
-	public static void setTotalProfit(String total,String totalProfit){
+	public static void setTotalProfit(){
+		String total = Currency.getCurrencyTotal();
+		String totalProfit = Currency.getCurrencyTotalProfit();
 		MainActivity.total.setText(total);
 		MainActivity.totalProfit.setText(totalProfit);
 	}

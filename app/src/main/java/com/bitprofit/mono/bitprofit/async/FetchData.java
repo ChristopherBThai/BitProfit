@@ -24,36 +24,26 @@ import java.util.ArrayList;
 
 public class FetchData extends AsyncTask<Void,Void,Void>{
 
-	private double total=0,totalProfit=0,totalInitial=0;
-	private static boolean inUse = false;
-	private boolean success = false;
+	private Var.Coin coin;
+
+	public FetchData(Var.Coin coin){
+		this.coin = coin;
+	}
 
 	@Override
 	protected Void doInBackground(Void... voids){
-		if(inUse)
-			return null;
-		inUse = true;
-		while(Var.inUse);
-		Var.lock();
-		for(Var.Coin c : Var.coins){
-			totalInitial += c.initial;
-			grabInfo(c);
-		}
-		Var.unlock();
-		totalProfit = total - totalInitial;
-		success = true;
+		grabInfo(coin);
 		return null;
 	}
 
 	@Override
 	protected void onPostExecute(Void aVoid){
 		super.onPostExecute(aVoid);
-		if(!success)
-			return;
 		MainActivity.resetRecycleView();
-		MainActivity.setTotalProfit(toDollars(total),toDollars(totalProfit));
-		inUse = false;
+		MainActivity.setTotalProfit();
 	}
+
+
 
 	private void grabInfo(Var.Coin coin){
 		try{
@@ -91,21 +81,10 @@ public class FetchData extends AsyncTask<Void,Void,Void>{
 
 			double total = price*coins;
 			double profit = total - initial;
-			this.total += total;
 
-			String priceS = toDollars(price);
-			String totalS = toDollars(total);
-			String profitS = toDollars(profit);
-
-			Currency.updateCurrency(name,symbol,priceS,totalS,profitS);
+			Currency.updateCurrency(coin.name,name,symbol,price,total,profit);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-	}
-
-	private String toDollars(double num){
-		if(num<1&&num>-1)
-			return String.format("$%,.5f",num);
-		return String.format("$%,.2f",num);
 	}
 }

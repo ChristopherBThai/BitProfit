@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.util.Log;
 
 import com.bitprofit.mono.bitprofit.async.FetchData;
+import com.bitprofit.mono.bitprofit.variables.Var;
 
 /**
  * Created by Christopher Thai on 12/28/2017.
@@ -12,6 +13,8 @@ import com.bitprofit.mono.bitprofit.async.FetchData;
 public class Updater{
 	public static Handler handler = new Handler();
 	public static int delay = 60000;
+
+	static boolean tempCheck = false;
 
 	public static void start(int ms){
 		delay = ms;
@@ -35,9 +38,17 @@ public class Updater{
 	}
 
 	private static void fetch(){
-		FetchData process = new FetchData();
-		process.execute();
-		Log.i("BitProfit","Updating coins");
+		if(!tempCheck){
+			for(Var.Coin c:Var.coins){
+				Currency.addUninitializedCurrency(c.name);
+			}
+			tempCheck = true;
+		}
+		for(Var.Coin c : Var.coins){
+			Log.i("BitProfit","Updating coin "+c.name);
+			FetchData process = new FetchData(c);
+			process.execute();
+		}
 	}
 
 }

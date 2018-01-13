@@ -23,6 +23,7 @@ public class FetchCurrencyListImage extends AsyncTask<Void,Void,Void>{
 
 	public FetchCurrencyListImage(String name,ImageView image){
 		name = name.toLowerCase();
+		name = name.replaceAll("\\s*\\(.*\\)\\s*|\\s*\\[.*\\]\\s*","");
 		currencyName = name.replace(' ','-');
 		this.imageView = image;
 	}
