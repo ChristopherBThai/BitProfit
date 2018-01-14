@@ -23,8 +23,10 @@ public class Var{
 		}
 	}
 
-	public static void addCoin(String name,double coins,double initial){
-		Var.coins.add(new Var.Coin(name,coins,initial));
+	public static Coin addCoin(String name,double coins,double initial){
+		Coin c = new Coin(name,coins,initial);
+		Var.coins.add(c);
+		return c;
 	}
 
 	public static void lock(){
@@ -57,5 +59,12 @@ public class Var{
 		if(num<1&&num>-1)
 			return String.format("$%,.5f",num);
 		return String.format("$%,.2f",num);
+	}
+
+	public static String toFormatName(String name){
+		name = name.toLowerCase();
+		name = name.replaceAll("\\s*\\(.*\\)\\s*|\\s*\\[.*\\]\\s*","");
+		name = name.replace(' ','-');
+		return name;
 	}
 }

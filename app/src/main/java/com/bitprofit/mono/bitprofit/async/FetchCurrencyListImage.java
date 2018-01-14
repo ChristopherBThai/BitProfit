@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.widget.ImageView;
 
 import com.bitprofit.mono.bitprofit.Currency;
+import com.bitprofit.mono.bitprofit.variables.Var;
 
 import java.io.InputStream;
 import java.net.URL;
@@ -22,9 +23,7 @@ public class FetchCurrencyListImage extends AsyncTask<Void,Void,Void>{
 
 
 	public FetchCurrencyListImage(String name,ImageView image){
-		name = name.toLowerCase();
-		name = name.replaceAll("\\s*\\(.*\\)\\s*|\\s*\\[.*\\]\\s*","");
-		currencyName = name.replace(' ','-');
+		currencyName = Var.toFormatName(name);
 		this.imageView = image;
 	}
 

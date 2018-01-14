@@ -10,11 +10,13 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.support.v7.widget.RecyclerView;
 
 import com.bitprofit.mono.bitprofit.async.FetchCurrencyList;
+import com.bitprofit.mono.bitprofit.async.FetchData;
 import com.bitprofit.mono.bitprofit.async.ReadJson;
 import com.bitprofit.mono.bitprofit.async.WriteJson;
 import com.bitprofit.mono.bitprofit.variables.Var;
@@ -146,6 +148,22 @@ public class MainActivity extends AppCompatActivity{
 			public void onClick(View view){
 				adder2.setVisibility(View.INVISIBLE);
 				adder.setVisibility(View.VISIBLE);
+			}
+		});
+
+		button = (Button)findViewById(R.id.search2_submit);
+		button.setOnClickListener(new View.OnClickListener(){
+			@Override
+			public void onClick(View view){
+				String name = ((TextView)findViewById(R.id.search2_name)).getText().toString();
+				name = Var.toFormatName(name);
+				double initial = Double.valueOf(((EditText)findViewById(R.id.search2_usd)).getText().toString());
+				double amount = Double.valueOf(((EditText)findViewById(R.id.search2_coin)).getText().toString());
+				Var.Coin c = Var.addCoin(name,amount,initial);
+				FetchData data = new FetchData(c);
+				data.execute();
+				adder.setVisibility(View.INVISIBLE);
+				adder2.setVisibility(View.INVISIBLE);
 			}
 		});
 	}

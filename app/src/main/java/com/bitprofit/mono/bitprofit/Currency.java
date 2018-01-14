@@ -34,9 +34,7 @@ public class Currency{
 	}
 
 	public String getImageURL(){
-		String temp = name;
-		temp = temp.toLowerCase();
-		temp = temp.replace(' ','-');
+		String temp = Var.toFormatName(name);
 		return "https://files.coinmarketcap.com/static/img/coins/64x64/"+temp+".png";
 	}
 
