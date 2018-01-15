@@ -55,6 +55,9 @@ public class MainActivity extends AppCompatActivity{
 		Var.addCoin("tron",308.691,50);
 		Var.addCoin("dogecoin",2000,18.882434);
 		Var.addCoin("reddcoin",1755.52958824,19.062553);
+		Var.addCoin("siacoin",733.8031537,50);
+		Var.addCoin("nem",36.92100000,50);
+		load();
 
 		initButtons();
 		initSearchView();
@@ -164,6 +167,7 @@ public class MainActivity extends AppCompatActivity{
 				data.execute();
 				adder.setVisibility(View.INVISIBLE);
 				adder2.setVisibility(View.INVISIBLE);
+				save();
 			}
 		});
 	}

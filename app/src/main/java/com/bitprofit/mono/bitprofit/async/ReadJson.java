@@ -1,6 +1,7 @@
 package com.bitprofit.mono.bitprofit.async;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.bitprofit.mono.bitprofit.Updater;
 import com.bitprofit.mono.bitprofit.variables.Var;
@@ -66,9 +67,11 @@ public class ReadJson extends AsyncTask<Void,Void,Void>{
 
 	private void addCoin(JSONObject coin){
 		try{
-			Var.addCoin(""+coin.get("name"),Double.parseDouble(""+coin.get("coin")),Double.parseDouble(""+coin.get("initial")));
+			Var.Coin c = Var.addCoin(""+coin.get("name"),Double.parseDouble(""+coin.get("coins")),Double.parseDouble(""+coin.get("initial")));
+			Var.log("Read from save: "+c.name);
 		}catch(Exception e){
 			e.printStackTrace();
+			Var.error("Failed reading from save");
 		}
 	}
 }

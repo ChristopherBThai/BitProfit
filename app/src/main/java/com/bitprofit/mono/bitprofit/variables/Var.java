@@ -1,5 +1,7 @@
 package com.bitprofit.mono.bitprofit.variables;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 /**
@@ -66,5 +68,13 @@ public class Var{
 		name = name.replaceAll("\\s*\\(.*\\)\\s*|\\s*\\[.*\\]\\s*","");
 		name = name.replace(' ','-');
 		return name;
+	}
+
+	public static void log(String log){
+		Log.i("BitProfitLog",log);
+	}
+
+	public static void error(String error){
+		Log.e("BitProfitLog",error);
 	}
 }
