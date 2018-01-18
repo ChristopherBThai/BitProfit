@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity{
 	private static RecyclerView recycle,currencyList;
 	private static RVAMain adapter;
 	private static RVACurrencyList currencyAdapter;
-	RelativeLayout adder,adder2;
+	RelativeLayout adder,adder2,info;
 	private static ViewGroup decor;
 
 	@Override
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity{
 		Var.addCoin("verify",39.966,50);
 		Var.addCoin("bounty0x",239.7678921,50);
 		Var.addCoin("cardano",50,10.9466612378);
-		Var.addCoin("ripple",61.11809925,116.1084172342);
+		Var.addCoin("ripple",199.46379946,316.1084172342);
 		Var.addCoin("dragonchain",18.934047,50);
 		Var.addCoin("tron",308.691,50);
 		Var.addCoin("dogecoin",2000,18.882434);
@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity{
 
 	protected void initRecyclerView(){
 		LinearLayoutManager llm = new LinearLayoutManager(this);
-		adapter = new RVAMain(Currency.getCurrencies());
+		adapter = new RVAMain(Currency.getCurrencies(),(RelativeLayout)findViewById(R.id.infocard));
 
 		recycle.setHasFixedSize(true);
 		recycle.setLayoutManager(llm);
@@ -155,6 +155,7 @@ public class MainActivity extends AppCompatActivity{
 		});
 
 		button = (Button)findViewById(R.id.search2_submit);
+		info = (RelativeLayout)findViewById(R.id.infocard);
 		button.setOnClickListener(new View.OnClickListener(){
 			@Override
 			public void onClick(View view){
@@ -168,6 +169,14 @@ public class MainActivity extends AppCompatActivity{
 				adder.setVisibility(View.INVISIBLE);
 				adder2.setVisibility(View.INVISIBLE);
 				save();
+			}
+		});
+
+		button = (Button)findViewById(R.id.info_back);
+		button.setOnClickListener(new View.OnClickListener(){
+			@Override
+			public void onClick(View view){
+				info.setVisibility(View.INVISIBLE);
 			}
 		});
 	}

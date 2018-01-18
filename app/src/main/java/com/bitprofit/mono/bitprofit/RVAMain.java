@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -19,13 +20,15 @@ import java.util.List;
 public class RVAMain extends RecyclerView.Adapter<RVAMain.CurrencyViewHolder>{
 
 	List<Currency> currencies;
+	static RelativeLayout layout;
 
 	/**
 	 * RecyclerView Adapter that will set the cards
 	 * @param currencies The currencies that will be shown
 	 */
-	RVAMain(List<Currency> currencies){
+	RVAMain(List<Currency> currencies,RelativeLayout rlayout){
 		this.currencies = currencies;
+		layout = rlayout;
 	}
 
 	@Override
@@ -75,6 +78,12 @@ public class RVAMain extends RecyclerView.Adapter<RVAMain.CurrencyViewHolder>{
 			total = (TextView)itemView.findViewById(R.id.total);
 			profit = (TextView)itemView.findViewById(R.id.profit);
 			image = (ImageView)itemView.findViewById(R.id.icon);
+			cv.setOnClickListener(new View.OnClickListener(){
+				@Override
+				public void onClick(View view){
+					layout.setVisibility(View.VISIBLE);
+				}
+			});
 		}
 	}
 }

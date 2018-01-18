@@ -141,4 +141,9 @@
         layout="@layout/addcard_2"
         android:visibility="invisible"/>
 
+    <include
+        android:id="@+id/infocard"
+        layout="@layout/currency_info"
+        android:visibility="invisible"/>
+
 </FrameLayout>
