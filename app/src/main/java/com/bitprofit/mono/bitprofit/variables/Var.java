@@ -63,6 +63,10 @@ public class Var{
 		return String.format("$%,.2f",num);
 	}
 
+	public static String toBTC(double num){
+		return String.format("%,.2f BTC",num);
+	}
+
 	public static String toFormatName(String name){
 		name = name.toLowerCase();
 		name = name.replaceAll("\\s*\\(.*\\)\\s*|\\s*\\[.*\\]\\s*","");
