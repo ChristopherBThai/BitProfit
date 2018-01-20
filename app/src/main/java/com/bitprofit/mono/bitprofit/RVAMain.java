@@ -11,6 +11,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bitprofit.mono.bitprofit.async.FetchCurrencyInfo;
+import com.bitprofit.mono.bitprofit.async.FetchCurrencyInfoImage;
+import com.bitprofit.mono.bitprofit.async.FetchCurrencyListImage;
 import com.bitprofit.mono.bitprofit.variables.Var;
 
 import java.util.List;
@@ -73,8 +75,9 @@ public class RVAMain extends RecyclerView.Adapter<RVAMain.CurrencyViewHolder>{
 		TextView name,price,total,profit;
 		ImageView image;
 		static FetchCurrencyInfo info;
+		static FetchCurrencyInfoImage infoImage;
 
-		CurrencyViewHolder(View itemView){
+		CurrencyViewHolder(final View itemView){
 			super(itemView);
 			cv = (CardView)itemView.findViewById(R.id.cv);
 			name = (TextView)itemView.findViewById(R.id.name);
@@ -88,8 +91,13 @@ public class RVAMain extends RecyclerView.Adapter<RVAMain.CurrencyViewHolder>{
 					layout.setVisibility(View.VISIBLE);
 					if(info!=null)
 						info.cancel(true);
-					info = new FetchCurrencyInfo(Var.toFormatName(name.getText().toString()),layout);
+					if(infoImage!=null)
+						infoImage.cancel(true);
+					String currencyName = Var.toFormatName(name.getText().toString());
+					info = new FetchCurrencyInfo(currencyName,layout);
 					info.execute();
+					infoImage = new FetchCurrencyInfoImage(currencyName,(ImageView)layout.findViewById(R.id.info_icon));
+					infoImage.execute();
 				}
 			});
 		}
