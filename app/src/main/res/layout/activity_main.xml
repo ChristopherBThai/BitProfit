@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/background_gradient"
         android:orientation="vertical"
-        tools:context="com.bitprofit.mono.bitprofit.MainActivity">
+        tools:context="com.bitprofit.mono.bitprofit.main.MainActivity">
 
 
         <android.support.v7.widget.CardView
@@ -130,16 +130,6 @@
 
 
     </LinearLayout>
-
-    <include
-        android:id="@+id/addcard"
-        layout="@layout/addcard"
-        android:visibility="invisible"/>
-
-    <include
-        android:id="@+id/addcard2"
-        layout="@layout/addcard_2"
-        android:visibility="invisible"/>
 
     <include
         android:id="@+id/infocard"

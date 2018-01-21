@@ -1,4 +1,4 @@
-package com.bitprofit.mono.bitprofit.variables;
+package com.bitprofit.mono.bitprofit.helper;
 
 import android.util.Log;
 
@@ -9,12 +9,19 @@ import java.util.ArrayList;
  */
 
 public class Var{
+	public static String INTENT_CURRENCY_LIST_NAME = "CurrencyListActivity.name";
+	public static String INTENT_CURRENCY_INFO_NAME= "CurrencyInfoActivity.name";
+
 	public static boolean inUse = false;
+
 	public static ArrayList<Coin> coins = new ArrayList<Coin>();
 	public static ArrayList<AvailableCoin> availableCoins = new ArrayList<>();
 	public static ArrayList<AvailableCoin> selectedCoins = new ArrayList<>();
+
 	public static double total,totalProfit;
+
 	public static final String FILENAME = "save.json";
+
 	public static class Coin{
 		public String name;
 		public double coins,initial;

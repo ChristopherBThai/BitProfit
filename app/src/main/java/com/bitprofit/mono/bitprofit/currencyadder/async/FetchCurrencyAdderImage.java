@@ -1,11 +1,10 @@
-package com.bitprofit.mono.bitprofit.async;
+package com.bitprofit.mono.bitprofit.currencyadder.async;
 
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.widget.ImageView;
 
-import com.bitprofit.mono.bitprofit.Currency;
-import com.bitprofit.mono.bitprofit.variables.Var;
+import com.bitprofit.mono.bitprofit.helper.Var;
 
 import java.io.InputStream;
 import java.net.URL;
@@ -15,15 +14,15 @@ import java.net.URL;
  * Created by Christopher Thai on 1/12/2018.
  */
 
-public class FetchCurrencyListImage extends AsyncTask<Void,Void,Void>{
+public class FetchCurrencyAdderImage extends AsyncTask<Void,Void,Void>{
 
 	private String currencyName;
 	private Drawable d;
 	private ImageView imageView;
 
 
-	public FetchCurrencyListImage(String name,ImageView image){
-		currencyName = Var.toFormatName(name);
+	public FetchCurrencyAdderImage(String formatname, ImageView image){
+		currencyName = formatname;
 		this.imageView = image;
 	}
 

@@ -1,4 +1,4 @@
-package com.bitprofit.mono.bitprofit;
+package com.bitprofit.mono.bitprofit.main;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -10,10 +10,11 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bitprofit.mono.bitprofit.async.FetchCurrencyInfo;
-import com.bitprofit.mono.bitprofit.async.FetchCurrencyInfoImage;
-import com.bitprofit.mono.bitprofit.async.FetchCurrencyListImage;
-import com.bitprofit.mono.bitprofit.variables.Var;
+import com.bitprofit.mono.bitprofit.helper.Currency;
+import com.bitprofit.mono.bitprofit.R;
+import com.bitprofit.mono.bitprofit.currencyinfo.async.FetchCurrencyInfo;
+import com.bitprofit.mono.bitprofit.currencyinfo.async.FetchCurrencyInfoImage;
+import com.bitprofit.mono.bitprofit.helper.Var;
 
 import java.util.List;
 
@@ -26,14 +27,16 @@ public class RVAMain extends RecyclerView.Adapter<RVAMain.CurrencyViewHolder>{
 
 	List<Currency> currencies;
 	static RelativeLayout layout;
+	static MainActivity activity;
 
 	/**
 	 * RecyclerView Adapter that will set the cards
 	 * @param currencies The currencies that will be shown
 	 */
-	RVAMain(List<Currency> currencies,RelativeLayout rlayout){
+	public RVAMain(List<Currency> currencies,RelativeLayout rlayout,MainActivity activity){
 		this.currencies = currencies;
 		layout = rlayout;
+		this.activity = activity;
 	}
 
 	@Override
@@ -51,15 +54,15 @@ public class RVAMain extends RecyclerView.Adapter<RVAMain.CurrencyViewHolder>{
 
 	@Override
 	public void onBindViewHolder(CurrencyViewHolder currencyViewHolder, int i){
-		currencyViewHolder.name.setText(currencies.get(i).name);
+		currencyViewHolder.name.setText(currencies.get(i).getName());
 		currencyViewHolder.price.setText(currencies.get(i).getPrice());
 		currencyViewHolder.total.setText(currencies.get(i).getTotal());
 		currencyViewHolder.profit.setText(currencies.get(i).getProfit());
 		//ASyncTask FetchImage will update the image if it hasn't finished
-		if(currencies.get(i).icon==null)
+		if(currencies.get(i).getIcon()==null)
 			currencies.get(i).needsReload(currencyViewHolder.image);
 		else
-			currencyViewHolder.image.setImageDrawable(currencies.get(i).icon);
+			currencyViewHolder.image.setImageDrawable(currencies.get(i).getIcon());
 	}
 
 	@Override
@@ -88,16 +91,7 @@ public class RVAMain extends RecyclerView.Adapter<RVAMain.CurrencyViewHolder>{
 			cv.setOnClickListener(new View.OnClickListener(){
 				@Override
 				public void onClick(View view){
-					layout.setVisibility(View.VISIBLE);
-					if(info!=null)
-						info.cancel(true);
-					if(infoImage!=null)
-						infoImage.cancel(true);
-					String currencyName = Var.toFormatName(name.getText().toString());
-					info = new FetchCurrencyInfo(currencyName,layout);
-					info.execute();
-					infoImage = new FetchCurrencyInfoImage(currencyName,(ImageView)layout.findViewById(R.id.info_icon));
-					infoImage.execute();
+					activity.showInfo(name.getText().toString());
 				}
 			});
 		}

@@ -1,11 +1,10 @@
-package com.bitprofit.mono.bitprofit;
+package com.bitprofit.mono.bitprofit.helper;
 
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.widget.ImageView;
 
-import com.bitprofit.mono.bitprofit.async.FetchImage;
-import com.bitprofit.mono.bitprofit.variables.Var;
+import com.bitprofit.mono.bitprofit.main.async.FetchImage;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,6 +35,18 @@ public class Currency{
 	public String getImageURL(){
 		String temp = Var.toFormatName(name);
 		return "https://files.coinmarketcap.com/static/img/coins/64x64/"+temp+".png";
+	}
+
+	public String getName(){
+		return name;
+	}
+
+	public Drawable getIcon(){
+		return icon;
+	}
+
+	public String getSymbol(){
+		return symbol;
 	}
 
 	public String getTotal(){

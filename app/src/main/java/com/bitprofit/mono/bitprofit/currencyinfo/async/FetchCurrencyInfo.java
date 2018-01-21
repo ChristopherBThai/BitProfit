@@ -1,11 +1,12 @@
-package com.bitprofit.mono.bitprofit.async;
+package com.bitprofit.mono.bitprofit.currencyinfo.async;
 
 import android.os.AsyncTask;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bitprofit.mono.bitprofit.R;
-import com.bitprofit.mono.bitprofit.variables.Var;
+import com.bitprofit.mono.bitprofit.helper.Var;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -22,14 +23,15 @@ import java.net.URL;
 
 public class FetchCurrencyInfo extends AsyncTask<Void,Void,Void>{
 	String name,symbol,price,change_1h,change_24h,change_7d,volume,market_cap,available_supply,total_supply,max_supply;
-	RelativeLayout layout;
-	public FetchCurrencyInfo(String name,RelativeLayout layout){
+	AppCompatActivity layout;
+	public FetchCurrencyInfo(String name,AppCompatActivity layout){
 		this.name = name;
 		this.layout = layout;
 	}
 
 	@Override
 	protected Void doInBackground(Void... voids){
+		Var.log("Grabbing info");
 		grabInfo();
 		return null;
 	}

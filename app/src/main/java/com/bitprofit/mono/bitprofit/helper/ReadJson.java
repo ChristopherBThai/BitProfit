@@ -1,15 +1,13 @@
-package com.bitprofit.mono.bitprofit.async;
+package com.bitprofit.mono.bitprofit.helper;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
-import com.bitprofit.mono.bitprofit.Updater;
-import com.bitprofit.mono.bitprofit.variables.Var;
+import com.bitprofit.mono.bitprofit.main.Updater;
+import com.bitprofit.mono.bitprofit.helper.Var;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
@@ -29,6 +27,7 @@ public class ReadJson extends AsyncTask<Void,Void,Void>{
 
 	@Override
 	protected Void doInBackground(Void... voids){
+		Var.log("Loading Cryptos");
 		try{
 			if(stream.available()==0){
 				return null;
@@ -42,15 +41,12 @@ public class ReadJson extends AsyncTask<Void,Void,Void>{
 				data += line;
 			}
 
-			while(Var.inUse);
-			Var.lock();
 			//Convert info to currency object
 			JSONArray JA = new JSONArray(data);
 			for(int i=0;i<JA.length();i++){
 				JSONObject JO = (JSONObject)JA.get(i);
 				addCoin(JO);
 			}
-			Var.unlock();
 
 		}catch(Exception e){
 			e.printStackTrace();

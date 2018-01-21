@@ -1,10 +1,11 @@
-package com.bitprofit.mono.bitprofit.async;
+package com.bitprofit.mono.bitprofit.currencylist.async;
 
-import android.content.res.AssetManager;
 import android.os.AsyncTask;
 
-import com.bitprofit.mono.bitprofit.MainActivity;
-import com.bitprofit.mono.bitprofit.variables.Var;
+import com.bitprofit.mono.bitprofit.currencylist.CurrencyListActivity;
+import com.bitprofit.mono.bitprofit.currencylist.RVACurrencyList;
+import com.bitprofit.mono.bitprofit.main.MainActivity;
+import com.bitprofit.mono.bitprofit.helper.Var;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -43,7 +44,7 @@ public class FetchCurrencyList extends AsyncTask<Void,Void,Void>{
 	@Override
 	protected void onPostExecute(Void aVoid){
 		super.onPostExecute(aVoid);
-		MainActivity.resetAvailableCurrencyRecycleView();
+		CurrencyListActivity.resetRecyclerView();
 	}
 
 }

@@ -1,11 +1,10 @@
-package com.bitprofit.mono.bitprofit.async;
+package com.bitprofit.mono.bitprofit.main.async;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
-import com.bitprofit.mono.bitprofit.Currency;
-import com.bitprofit.mono.bitprofit.MainActivity;
-import com.bitprofit.mono.bitprofit.variables.Var;
+import com.bitprofit.mono.bitprofit.helper.Currency;
+import com.bitprofit.mono.bitprofit.main.MainActivity;
+import com.bitprofit.mono.bitprofit.helper.Var;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -15,7 +14,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
 
 /**
  * Fetches data from coinmarketcap api

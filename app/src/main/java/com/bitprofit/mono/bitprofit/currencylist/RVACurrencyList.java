@@ -1,4 +1,4 @@
-package com.bitprofit.mono.bitprofit;
+package com.bitprofit.mono.bitprofit.currencylist;
 
 /**
  * Recycler view adapter for all the list of currencies
@@ -10,12 +10,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bitprofit.mono.bitprofit.async.FetchCurrencyListImage;
-import com.bitprofit.mono.bitprofit.variables.Var;
+import com.bitprofit.mono.bitprofit.R;
+import com.bitprofit.mono.bitprofit.helper.Var;
 
 import java.util.List;
 
@@ -23,18 +21,15 @@ import java.util.List;
 public class RVACurrencyList extends RecyclerView.Adapter<RVACurrencyList.CurrencyName>{
 
 	List<Var.AvailableCoin> currencies;
-	static RelativeLayout nextLayout,currentLayout;
+	static CurrencyListActivity context;
 
 	/**
 	 * RecyclerView Adapter for adding currencies
-	 * @param cLayout current layout
-	 * @param nLayout next layout
 	 * @param currencies list of available currencies
 	 */
-	RVACurrencyList(List<Var.AvailableCoin> currencies, RelativeLayout nLayout, RelativeLayout cLayout){
+	public RVACurrencyList(List<Var.AvailableCoin> currencies, CurrencyListActivity context){
 		this.currencies = currencies;
-		this.nextLayout = nLayout;
-		this.currentLayout = cLayout;
+		this.context = context;
 	}
 
 	@Override
@@ -44,7 +39,7 @@ public class RVACurrencyList extends RecyclerView.Adapter<RVACurrencyList.Curren
 
 	@Override
 	public CurrencyName onCreateViewHolder(ViewGroup viewGroup, int i){
-		View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.currency_name,viewGroup,false);
+		View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.currency_list_name,viewGroup,false);
 		CurrencyName cvh = new CurrencyName(v);
 		return cvh;
 	}
@@ -66,8 +61,6 @@ public class RVACurrencyList extends RecyclerView.Adapter<RVACurrencyList.Curren
 	public static class CurrencyName extends RecyclerView.ViewHolder{
 		CardView cv;
 		TextView name,abb;
-		static FetchCurrencyListImage fetchImage;
-		static ImageView imageView;
 
 		CurrencyName(View itemView){
 			super(itemView);
@@ -77,23 +70,9 @@ public class RVACurrencyList extends RecyclerView.Adapter<RVACurrencyList.Curren
 			cv.setOnClickListener(new View.OnClickListener(){
 				@Override
 				public void onClick(View view){
-					nextLayout.setVisibility(View.VISIBLE);
-					currentLayout.setVisibility(View.INVISIBLE);
-					((TextView)nextLayout.findViewById(R.id.search2_name)).setText(name.getText());
-					((TextView)nextLayout.findViewById(R.id.search2_symbol)).setText(abb.getText());
-					grabImage(name);
+					context.selectCurrency(name.getText().toString());
 				}
 			});
-		}
-
-		static void grabImage(TextView name){
-			if(fetchImage==null){
-				imageView = ((ImageView) nextLayout.findViewById(R.id.search2_icon));
-			}else{
-				fetchImage.cancel(true);
-			}
-			fetchImage = new FetchCurrencyListImage(name.getText().toString(), imageView);
-			fetchImage.execute();
 		}
 	}
 

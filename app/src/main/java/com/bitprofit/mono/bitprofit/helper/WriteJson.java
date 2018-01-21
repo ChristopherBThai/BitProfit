@@ -1,9 +1,9 @@
-package com.bitprofit.mono.bitprofit.async;
+package com.bitprofit.mono.bitprofit.helper;
 
 import android.os.AsyncTask;
 import android.util.JsonWriter;
 
-import com.bitprofit.mono.bitprofit.variables.Var;
+import com.bitprofit.mono.bitprofit.helper.Var;
 
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
@@ -24,6 +24,7 @@ public class WriteJson extends AsyncTask<Void,Void,Void>{
 
 	@Override
 	protected Void doInBackground(Void... voids){
+		Var.log("Saving cryptos");
 		try{
 			JsonWriter writer = new JsonWriter(new OutputStreamWriter(out,"UTF-8"));
 			writer.setIndent("  ");

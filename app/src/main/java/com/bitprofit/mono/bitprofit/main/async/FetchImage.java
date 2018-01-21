@@ -1,15 +1,12 @@
-package com.bitprofit.mono.bitprofit.async;
+package com.bitprofit.mono.bitprofit.main.async;
 
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
-import android.util.Log;
-import android.widget.ImageView;
 
-import com.bitprofit.mono.bitprofit.Currency;
+import com.bitprofit.mono.bitprofit.helper.Currency;
 
 import java.io.InputStream;
 import java.net.URL;
-import java.util.HashMap;
 
 /**
  * Fetches images for currency in use

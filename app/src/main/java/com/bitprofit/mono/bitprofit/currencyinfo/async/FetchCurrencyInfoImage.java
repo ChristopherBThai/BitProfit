@@ -1,10 +1,8 @@
-package com.bitprofit.mono.bitprofit.async;
+package com.bitprofit.mono.bitprofit.currencyinfo.async;
 
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.widget.ImageView;
-
-import com.bitprofit.mono.bitprofit.variables.Var;
 
 import java.io.InputStream;
 import java.net.URL;
