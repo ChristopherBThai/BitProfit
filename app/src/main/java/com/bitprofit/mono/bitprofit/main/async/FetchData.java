@@ -80,7 +80,7 @@ public class FetchData extends AsyncTask<Void,Void,Void>{
 			double total = price*coins;
 			double profit = total - initial;
 
-			Currency.updateCurrency(coin.name,name,symbol,price,total,profit);
+			Currency.updateCurrency(coin.id,name,symbol,price,total,profit);
 		}catch(Exception e){
 			e.printStackTrace();
 		}

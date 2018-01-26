@@ -41,7 +41,7 @@ public class Updater{
 	private static void fetch(){
 		if(!tempCheck){
 			for(Var.Coin c:Var.coins){
-				Currency.addUninitializedCurrency(c.name);
+				Currency.addUninitializedCurrency(c.id,c.name);
 			}
 			tempCheck = true;
 		}

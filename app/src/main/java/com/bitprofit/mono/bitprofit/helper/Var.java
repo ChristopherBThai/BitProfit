@@ -3,6 +3,7 @@ package com.bitprofit.mono.bitprofit.helper;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by Christopher Thai on 12/27/2017.
@@ -14,6 +15,7 @@ public class Var{
 
 	public static boolean inUse = false;
 
+	public static HashMap<String,Coin> hashCoins = new HashMap<>();
 	public static ArrayList<Coin> coins = new ArrayList<Coin>();
 	public static ArrayList<AvailableCoin> availableCoins = new ArrayList<>();
 	public static ArrayList<AvailableCoin> selectedCoins = new ArrayList<>();
@@ -25,17 +27,47 @@ public class Var{
 	public static class Coin{
 		public String name;
 		public double coins,initial;
-		Coin(String name,double coins,double initial){
+		public int id;
+		Coin(int id,String name,double coins,double initial){
 			this.name = name;
 			this.coins = coins;
 			this.initial = initial;
+			this.id = id;
 		}
 	}
 
-	public static Coin addCoin(String name,double coins,double initial){
-		Coin c = new Coin(name,coins,initial);
-		Var.coins.add(c);
+	public static Coin updateCoin(int id,String name,double coins,double initial){
+		Coin c = hashCoins.get(""+id);
+		c.name = name;
+		c.coins = coins;
+		c.initial = initial;
 		return c;
+	}
+
+	public static Coin addNewCoin(String name,double coins,double initial){
+		int id = Var.hashCoins.size();
+		while(hashCoins.containsKey(""+id)){
+			id--;
+		}
+		Coin c = new Coin(id,name,coins,initial);
+		Var.coins.add(c);
+		Var.hashCoins.put(""+id,c);
+		return c;
+	}
+
+	public static Coin addCoin(int id,String name,double coins, double initial){
+		if(hashCoins.containsKey(""+id)){
+			Coin c = hashCoins.get(""+id);
+			c.name = name;
+			c.coins = coins;
+			c.initial = initial;
+			return c;
+		}else{
+			Coin c = new Coin(id,name,coins,initial);
+			Var.coins.add(c);
+			Var.hashCoins.put(""+id,c);
+			return c;
+		}
 	}
 
 	public static void lock(){

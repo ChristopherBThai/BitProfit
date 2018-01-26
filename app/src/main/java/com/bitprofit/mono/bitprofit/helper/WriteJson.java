@@ -63,6 +63,7 @@ public class WriteJson extends AsyncTask<Void,Void,Void>{
 			writer.name("name").value(c.name);
 			writer.name("coins").value(c.coins);
 			writer.name("initial").value(c.initial);
+			writer.name("id").value(c.id);
 			writer.endObject();
 		}catch(Exception e){
 			e.printStackTrace();

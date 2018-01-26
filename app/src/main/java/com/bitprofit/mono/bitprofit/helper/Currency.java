@@ -18,16 +18,18 @@ import java.util.List;
 public class Currency{
 	String name,symbol;
 	double price,total,profit;
+	int id;
 	Drawable icon;
 	public boolean needsReload,initialized;
 	ImageView imageView;
 
-	Currency(String name, String symbol, double price, double total, double profit){
+	Currency(int id,String name, String symbol, double price, double total, double profit){
 		this.name = name;
 		this.symbol = symbol;
 		this.price = price;
 		this.total = total;
 		this.profit = profit;
+		this.id = id;
 		needsReload = false;
 		initialized = true;
 	}
@@ -89,35 +91,36 @@ public class Currency{
 		hashCurrencies = new HashMap<String,Currency>();
 	}
 
-	public static void updateCurrency(String hash,String name, String symbol, double price, double total, double profit){
+	public static void updateCurrency(int id,String name, String symbol, double price, double total, double profit){
 		Log.i("BitProfit","Updating "+name+" to: "+price);
-		if(hashCurrencies.containsKey(hash)){
-			Currency c = hashCurrencies.get(hash);
+		if(hashCurrencies.containsKey(""+id)){
+			Currency c = hashCurrencies.get(""+id);
 			c.name = name;
 			c.symbol = symbol;
 			c.price = price;
 			c.total = total;
 			c.profit = profit;
+			c.id = id;
 			FetchImage fImage = new FetchImage(c);
 			fImage.execute();
 			c.initialized = true;
 		}else{
-			addCurrency(hash,name,symbol,price,total,profit);
+			addCurrency(id,name,symbol,price,total,profit);
 		}
 
 	}
 
-	public static void addCurrency(String hash,String name, String symbol, double price, double total, double profit){
-		Currency c = new Currency(name,symbol,price,total, profit);
+	public static void addCurrency(int id,String name, String symbol, double price, double total, double profit){
+		Currency c = new Currency(id,name,symbol,price,total, profit);
 		c.initialized = true;
 		FetchImage fImage = new FetchImage(c);
 		fImage.execute();
 		currencies.add(c);
-		hashCurrencies.put(hash,c);
+		hashCurrencies.put(""+id,c);
 	}
 
-	public static void addUninitializedCurrency(String name){
-		Currency c = new Currency(name,"-",0,0,0);
+	public static void addUninitializedCurrency(int id,String name){
+		Currency c = new Currency(id,name,"-",0,0,0);
 		c.initialized = false;
 		currencies.add(c);
 		hashCurrencies.put(name,c);

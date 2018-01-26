@@ -63,7 +63,10 @@ public class ReadJson extends AsyncTask<Void,Void,Void>{
 
 	private void addCoin(JSONObject coin){
 		try{
-			Var.Coin c = Var.addCoin(""+coin.get("name"),Double.parseDouble(""+coin.get("coins")),Double.parseDouble(""+coin.get("initial")));
+			Var.Coin c = Var.addCoin(Integer.parseInt(coin.get("id").toString()),
+					coin.get("name").toString(),
+					Double.parseDouble(coin.get("coins").toString()),
+					Double.parseDouble(coin.get("initial").toString()));
 			Var.log("Read from save: "+c.name);
 		}catch(Exception e){
 			e.printStackTrace();

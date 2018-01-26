@@ -69,7 +69,7 @@ public class CurrencyAdderActivity extends AppCompatActivity{
 				name = Var.toFormatName(name);
 				double initial = Double.valueOf(((EditText)findViewById(R.id.search2_usd)).getText().toString());
 				double amount = Double.valueOf(((EditText)findViewById(R.id.search2_coin)).getText().toString());
-				Var.Coin c = Var.addCoin(name,amount,initial);
+				Var.Coin c = Var.addNewCoin(name,amount,initial);
 				save();
 				startActivity(new Intent(CurrencyAdderActivity.this,MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 			}

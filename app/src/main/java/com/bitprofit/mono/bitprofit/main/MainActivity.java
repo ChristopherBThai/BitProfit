@@ -53,20 +53,22 @@ public class MainActivity extends AppCompatActivity{
 
 		initRecyclerView();
 
-		Var.addCoin("bitcoin",.01018814,150);
-		Var.addCoin("ethereum",.21102305,100.12);
-		Var.addCoin("litecoin",1.55290242,400);
-		Var.addCoin("raiblocks ",13.89999000 ,150);
-		Var.addCoin("verify",39.966,50);
-		Var.addCoin("bounty0x",239.7678921,50);
-		Var.addCoin("cardano",50,10.9466612378);
-		Var.addCoin("ripple",199.46379946,316.1084172342);
-		Var.addCoin("dragonchain",18.934047,50);
-		Var.addCoin("tron",308.691,50);
-		Var.addCoin("dogecoin",2000,18.882434);
-		Var.addCoin("reddcoin",1755.52958824,19.062553);
-		Var.addCoin("siacoin",733.8031537,50);
-		Var.addCoin("nem",36.92100000,50);
+		/*
+		Var.addNewCoin("bitcoin",.01018814,150);
+		Var.addNewCoin("ethereum",.21102305,100.12);
+		Var.addNewCoin("litecoin",1.55290242,400);
+		Var.addNewCoin("raiblocks ",13.89999000 ,150);
+		Var.addNewCoin("verify",39.966,50);
+		Var.addNewCoin("bounty0x",239.7678921,50);
+		Var.addNewCoin("cardano",50,10.9466612378);
+		Var.addNewCoin("ripple",199.46379946,316.1084172342);
+		Var.addNewCoin("dragonchain",18.934047,50);
+		Var.addNewCoin("tron",308.691,50);
+		Var.addNewCoin("dogecoin",2000,18.882434);
+		Var.addNewCoin("reddcoin",1755.52958824,19.062553);
+		Var.addNewCoin("siacoin",733.8031537,50);
+		Var.addNewCoin("nem",36.92100000,50);
+		*/
 
 		load();
 		initButtons();
