@@ -143,9 +143,9 @@ public class MainActivity extends AppCompatActivity{
 		MainActivity.totalProfit.setText(totalProfit);
 	}
 
-	public void showInfo(String name){
+	public void showInfo(int id){
 		Intent intent = new Intent(this, CurrencyInfoActivity.class);
-		intent.putExtra(Var.INTENT_CURRENCY_INFO_NAME,Var.toFormatName(name));
+		intent.putExtra(Var.INTENT_CURRENCY_INFO_ID,""+id);
 		startActivity(intent);
 	}
 }

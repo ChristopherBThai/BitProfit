@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 public class Var{
 	public static String INTENT_CURRENCY_LIST_NAME = "CurrencyListActivity.name";
-	public static String INTENT_CURRENCY_INFO_NAME= "CurrencyInfoActivity.name";
+	public static String INTENT_CURRENCY_INFO_ID= "CurrencyInfoActivity.name";
 
 	public static boolean inUse = false;
 
@@ -68,6 +68,23 @@ public class Var{
 			Var.hashCoins.put(""+id,c);
 			return c;
 		}
+	}
+
+	public static Coin addToCoin(int id,double initial, double amount){
+		Coin c = hashCoins.get(""+id);
+		c.initial += initial;
+		c.coins += amount;
+		return c;
+	}
+
+	public static Coin deleteCoin(int id){
+		Coin c = hashCoins.remove(""+id);
+		coins.remove(c);
+		return c;
+	}
+
+	public static Coin getCoin(int id){
+		return hashCoins.get(""+id);
 	}
 
 	public static void lock(){

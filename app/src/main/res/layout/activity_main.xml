@@ -102,7 +102,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:fontFamily="@font/roboto_light"
-                    android:text="+$100.00"
+                    android:text="$---.--"
                     android:textColor="@color/positive_font"
                     android:textSize="45sp"/>
 
@@ -115,7 +115,7 @@
                     android:fontFamily="@font/roboto_light"
                     android:paddingBottom="10dp"
                     android:paddingRight="10dp"
-                    android:text="$234.52"
+                    android:text="$---.--"
                     android:textColor="@color/font"
                     android:textSize="19sp"/>
 

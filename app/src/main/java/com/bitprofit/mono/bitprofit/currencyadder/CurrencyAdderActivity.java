@@ -23,6 +23,9 @@ import com.bitprofit.mono.bitprofit.main.async.FetchData;
 
 public class CurrencyAdderActivity extends AppCompatActivity{
 
+	private int id;
+	private boolean isInfo;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
@@ -31,6 +34,13 @@ public class CurrencyAdderActivity extends AppCompatActivity{
 		setContentView(R.layout.currency_adder);
 
 		String name = getIntent().getStringExtra(Var.INTENT_CURRENCY_LIST_NAME);
+		String stringID = getIntent().getStringExtra(Var.INTENT_CURRENCY_INFO_ID);
+		if(stringID!=null&&!stringID.equals("")){
+			id = Integer.parseInt(stringID);
+			isInfo = true;
+		}else
+			isInfo = false;
+
 		grabInfo(name);
 		grabImage(name);
 		initButtons();
@@ -69,7 +79,10 @@ public class CurrencyAdderActivity extends AppCompatActivity{
 				name = Var.toFormatName(name);
 				double initial = Double.valueOf(((EditText)findViewById(R.id.search2_usd)).getText().toString());
 				double amount = Double.valueOf(((EditText)findViewById(R.id.search2_coin)).getText().toString());
-				Var.Coin c = Var.addNewCoin(name,amount,initial);
+				if(isInfo)
+					Var.addToCoin(id,initial,amount);
+				else
+					Var.addNewCoin(name,amount,initial);
 				save();
 				startActivity(new Intent(CurrencyAdderActivity.this,MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 			}

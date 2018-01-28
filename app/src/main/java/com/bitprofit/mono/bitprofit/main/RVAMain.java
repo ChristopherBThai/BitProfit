@@ -58,6 +58,7 @@ public class RVAMain extends RecyclerView.Adapter<RVAMain.CurrencyViewHolder>{
 		currencyViewHolder.price.setText(currencies.get(i).getPrice());
 		currencyViewHolder.total.setText(currencies.get(i).getTotal());
 		currencyViewHolder.profit.setText(currencies.get(i).getProfit());
+		currencyViewHolder.id.setText(currencies.get(i).getId());
 		//ASyncTask FetchImage will update the image if it hasn't finished
 		if(currencies.get(i).getIcon()==null)
 			currencies.get(i).needsReload(currencyViewHolder.image);
@@ -75,7 +76,7 @@ public class RVAMain extends RecyclerView.Adapter<RVAMain.CurrencyViewHolder>{
 	 */
 	public static class CurrencyViewHolder extends RecyclerView.ViewHolder{
 		CardView cv;
-		TextView name,price,total,profit;
+		TextView name,price,total,profit,id;
 		ImageView image;
 		static FetchCurrencyInfo info;
 		static FetchCurrencyInfoImage infoImage;
@@ -87,11 +88,12 @@ public class RVAMain extends RecyclerView.Adapter<RVAMain.CurrencyViewHolder>{
 			price = (TextView)itemView.findViewById(R.id.price);
 			total = (TextView)itemView.findViewById(R.id.total);
 			profit = (TextView)itemView.findViewById(R.id.profit);
+			id = (TextView)itemView.findViewById(R.id.id);
 			image = (ImageView)itemView.findViewById(R.id.icon);
 			cv.setOnClickListener(new View.OnClickListener(){
 				@Override
 				public void onClick(View view){
-					activity.showInfo(name.getText().toString());
+					activity.showInfo(Integer.parseInt(id.getText().toString()));
 				}
 			});
 		}

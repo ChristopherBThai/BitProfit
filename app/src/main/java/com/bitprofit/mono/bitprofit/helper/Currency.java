@@ -51,6 +51,10 @@ public class Currency{
 		return symbol;
 	}
 
+	public String getId(){
+		return ""+id;
+	}
+
 	public String getTotal(){
 		if(!initialized)
 			return "-";
@@ -117,6 +121,11 @@ public class Currency{
 		fImage.execute();
 		currencies.add(c);
 		hashCurrencies.put(""+id,c);
+	}
+
+	public static void deleteCurrency(int id){
+		Currency c = hashCurrencies.remove(""+id);
+		currencies.remove(c);
 	}
 
 	public static void addUninitializedCurrency(int id,String name){
