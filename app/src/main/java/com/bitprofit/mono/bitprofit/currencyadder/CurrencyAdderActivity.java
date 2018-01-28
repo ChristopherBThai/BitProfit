@@ -37,9 +37,13 @@ public class CurrencyAdderActivity extends AppCompatActivity{
 		String stringID = getIntent().getStringExtra(Var.INTENT_CURRENCY_INFO_ID);
 		if(stringID!=null&&!stringID.equals("")){
 			id = Integer.parseInt(stringID);
+			name = Var.getCoin(id).name;
 			isInfo = true;
-		}else
+			Var.log("Addint to existing currency for "+name);
+		}else{
 			isInfo = false;
+			Var.log("Adding a new coin "+name);
+		}
 
 		grabInfo(name);
 		grabImage(name);
@@ -79,10 +83,13 @@ public class CurrencyAdderActivity extends AppCompatActivity{
 				name = Var.toFormatName(name);
 				double initial = Double.valueOf(((EditText)findViewById(R.id.search2_usd)).getText().toString());
 				double amount = Double.valueOf(((EditText)findViewById(R.id.search2_coin)).getText().toString());
-				if(isInfo)
-					Var.addToCoin(id,initial,amount);
-				else
-					Var.addNewCoin(name,amount,initial);
+				if(isInfo){
+					Var.addToCoin(id, initial, amount);
+					Var.log("Adding to coin "+name);
+				}else{
+					Var.addNewCoin(name, amount, initial);
+					Var.log("Adding new coin "+name);
+				}
 				save();
 				startActivity(new Intent(CurrencyAdderActivity.this,MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 			}
@@ -93,8 +100,10 @@ public class CurrencyAdderActivity extends AppCompatActivity{
 		try{
 			WriteJson write = new WriteJson(openFileOutput(Var.FILENAME, Context.MODE_PRIVATE));
 			write.execute();
+			Var.log("Saving");
 		}catch(Exception e){
 			e.printStackTrace();
+			Var.error("Error saving");
 		}
 	}
 }

@@ -10,6 +10,6 @@
     <color name="font_opaque">#b4ffffff</color>
     <color name="topbar_background">#5a000000</color>
     <color name="midbar_background">#38000000</color>
-    <color name="positive_font">#59be5b</color>
-    <color name="negative_font">#e74b4e</color>
+    <color name="positive_font">#9bfd9c</color>
+    <color name="negative_font">#ff8a8c</color>
 </resources>

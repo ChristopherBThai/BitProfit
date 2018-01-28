@@ -150,11 +150,11 @@ public class Currency{
 		return Var.toDollars(total);
 	}
 
-	public static String getCurrencyTotalProfit(){
+	public static double getCurrencyTotalProfit(){
 		double profit = 0;
 		for(Currency c : currencies){
 			profit += c.profit;
 		}
-		return Var.toDollars(profit);
+		return profit;
 	}
 }

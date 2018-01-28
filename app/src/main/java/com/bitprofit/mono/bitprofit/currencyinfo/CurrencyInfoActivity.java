@@ -66,7 +66,7 @@ public class CurrencyInfoActivity extends AppCompatActivity{
 			@Override
 			public void onClick(View view){
 				Intent intent = new Intent(CurrencyInfoActivity.this, CurrencyAdderActivity.class);
-				intent.putExtra(Var.INTENT_CURRENCY_INFO_ID,id);
+				intent.putExtra(Var.INTENT_CURRENCY_INFO_ID,""+id);
 				startActivity(intent);
 			}
 		});

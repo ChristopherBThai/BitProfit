@@ -15,6 +15,8 @@ public class Var{
 
 	public static boolean inUse = false;
 
+	public static boolean dontUpdate = false;
+
 	public static HashMap<String,Coin> hashCoins = new HashMap<>();
 	public static ArrayList<Coin> coins = new ArrayList<Coin>();
 	public static ArrayList<AvailableCoin> availableCoins = new ArrayList<>();
