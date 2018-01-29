@@ -103,7 +103,7 @@
                     android:layout_centerVertical="true"
                     android:fontFamily="@font/roboto_light"
                     android:text="$---.--"
-                    android:textColor="@color/positive_font"
+                    android:textColor="@color/font"
                     android:textSize="45sp"/>
 
                 <TextView

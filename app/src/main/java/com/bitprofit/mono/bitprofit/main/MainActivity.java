@@ -31,7 +31,7 @@ import com.bitprofit.mono.bitprofit.helper.Var;
 public class MainActivity extends AppCompatActivity{
 
 	public static TextView total, totalProfit;
-	public static int pos,neg;
+	public static int pos,neg,zero;
 	private static RecyclerView recycle;
 	private static RVAMain adapter;
 	RelativeLayout info;
@@ -53,7 +53,9 @@ public class MainActivity extends AppCompatActivity{
 		totalProfit = (TextView) findViewById(R.id.barprofit);
 		recycle = (RecyclerView) findViewById(R.id.rv);
 		pos = getResources().getColor(R.color.positive_font);
-		pos = getResources().getColor(R.color.negative_font);
+		neg = getResources().getColor(R.color.negative_font);
+		zero = getResources().getColor(R.color.font);
+
 
 		initRecyclerView();
 /*
@@ -149,14 +151,19 @@ public class MainActivity extends AppCompatActivity{
 		MainActivity.totalProfit.setText(Var.toDollars(totalProfit));
 		if(totalProfit>0)
 			MainActivity.totalProfit.setTextColor(pos);
-		if(totalProfit<0)
+		else if(totalProfit<0)
 			MainActivity.totalProfit.setTextColor(neg);
+		else
+			MainActivity.totalProfit.setTextColor(zero);
 	}
 
-	public void showInfo(int id){
+	public void showInfo(int id,String holding,String profit,int color){
 		Var.dontUpdate = true;
 		Intent intent = new Intent(this, CurrencyInfoActivity.class);
 		intent.putExtra(Var.INTENT_CURRENCY_INFO_ID,""+id);
+		intent.putExtra(Var.INTENT_CURRENCY_INFO_HOLDING,holding);
+		intent.putExtra(Var.INTENT_CURRENCY_INFO_PROFIT,profit);
+		intent.putExtra(Var.INTENT_CURRENCY_INFO_COLOR,""+color);
 		startActivity(intent);
 	}
 }

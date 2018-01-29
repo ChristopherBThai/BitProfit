@@ -12,6 +12,9 @@ import java.util.HashMap;
 public class Var{
 	public static String INTENT_CURRENCY_LIST_NAME = "CurrencyListActivity.name";
 	public static String INTENT_CURRENCY_INFO_ID= "CurrencyInfoActivity.name";
+	public static String INTENT_CURRENCY_INFO_HOLDING= "CurrencyInfoActivity.holding";
+	public static String INTENT_CURRENCY_INFO_PROFIT= "CurrencyInfoActivity.profit";
+	public static String INTENT_CURRENCY_INFO_COLOR= "CurrencyInfoActivity.color";
 
 	public static boolean inUse = false;
 

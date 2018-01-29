@@ -54,6 +54,10 @@ public class RVAMain extends RecyclerView.Adapter<RVAMain.CurrencyViewHolder>{
 
 	@Override
 	public void onBindViewHolder(CurrencyViewHolder currencyViewHolder, int i){
+		if(currencies.get(i).isPositive())
+			currencyViewHolder.profit.setTextColor(MainActivity.pos);
+		else
+			currencyViewHolder.profit.setTextColor(MainActivity.neg);
 		currencyViewHolder.name.setText(currencies.get(i).getName());
 		currencyViewHolder.price.setText(currencies.get(i).getPrice());
 		currencyViewHolder.total.setText(currencies.get(i).getTotal());
@@ -93,7 +97,10 @@ public class RVAMain extends RecyclerView.Adapter<RVAMain.CurrencyViewHolder>{
 			cv.setOnClickListener(new View.OnClickListener(){
 				@Override
 				public void onClick(View view){
-					activity.showInfo(Integer.parseInt(id.getText().toString()));
+					activity.showInfo(Integer.parseInt(id.getText().toString()),
+							total.getText().toString(),
+							profit.getText().toString(),
+							profit.getCurrentTextColor());
 				}
 			});
 		}

@@ -73,6 +73,10 @@ public class Currency{
 		return Var.toDollars(price);
 	}
 
+	public boolean isPositive(){
+		return profit>0;
+	}
+
 	public void setIcon(Drawable icon){
 		this.icon = icon;
 	}

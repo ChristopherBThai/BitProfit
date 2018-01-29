@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.bitprofit.mono.bitprofit.R;
 import com.bitprofit.mono.bitprofit.helper.Var;
+import com.bitprofit.mono.bitprofit.main.MainActivity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -23,6 +24,7 @@ import java.net.URL;
 
 public class FetchCurrencyInfo extends AsyncTask<Void,Void,Void>{
 	String name,symbol,price,change_1h,change_24h,change_7d,volume,market_cap,available_supply,total_supply,max_supply;
+	int color_1h,color_24h,color_7d;
 	AppCompatActivity layout;
 	public FetchCurrencyInfo(String name,AppCompatActivity layout){
 		this.name = name;
@@ -46,6 +48,9 @@ public class FetchCurrencyInfo extends AsyncTask<Void,Void,Void>{
 		((TextView)layout.findViewById(R.id.info_change_1h)).setText(change_1h);
 		((TextView)layout.findViewById(R.id.info_change_24h)).setText(change_24h);
 		((TextView)layout.findViewById(R.id.info_change_7d)).setText(change_7d);
+		((TextView)layout.findViewById(R.id.info_change_1h)).setTextColor(color_1h);
+		((TextView)layout.findViewById(R.id.info_change_24h)).setTextColor(color_24h);
+		((TextView)layout.findViewById(R.id.info_change_7d)).setTextColor(color_7d);
 
 		((TextView)layout.findViewById(R.id.info_volume)).setText(volume);
 		((TextView)layout.findViewById(R.id.info_cap)).setText(market_cap);
@@ -95,12 +100,33 @@ public class FetchCurrencyInfo extends AsyncTask<Void,Void,Void>{
 			String change_1h = JO.get("percent_change_1h").toString();
 			Var.log("1h "+change_1h);
 			this.change_1h = change_1h+"%";
+			double temp = Double.parseDouble(change_1h);
+			if(temp>0)
+				color_1h = MainActivity.pos;
+			else if(temp<0)
+				color_1h = MainActivity.neg;
+			else
+				color_1h = MainActivity.zero;
 			String change_24h = JO.get("percent_change_24h").toString();
 			Var.log("24h "+change_24h);
 			this.change_24h = change_24h+"%";
+			temp = Double.parseDouble(change_24h);
+			if(temp>0)
+				color_24h = MainActivity.pos;
+			else if(temp<0)
+				color_24h = MainActivity.neg;
+			else
+				color_24h = MainActivity.zero;
 			String change_7d= JO.get("percent_change_7d").toString();
 			Var.log("7d"+change_7d);
 			this.change_7d = change_7d+"%";
+			temp = Double.parseDouble(change_7d);
+			if(temp>0)
+				color_7d= MainActivity.pos;
+			else if(temp<0)
+				color_7d= MainActivity.neg;
+			else
+				color_7d= MainActivity.zero;
 
 			double volume = Double.parseDouble(JO.get("24h_volume_usd").toString());
 			Var.log("volume "+volume);
