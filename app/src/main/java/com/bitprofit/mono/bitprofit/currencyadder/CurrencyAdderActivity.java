@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bitprofit.mono.bitprofit.R;
 import com.bitprofit.mono.bitprofit.currencyadder.async.FetchCurrencyAdderImage;
@@ -81,8 +82,18 @@ public class CurrencyAdderActivity extends AppCompatActivity{
 				//Add new currency
 				String name = ((TextView)findViewById(R.id.search2_name)).getText().toString();
 				name = Var.toFormatName(name);
-				double initial = Double.valueOf(((EditText)findViewById(R.id.search2_usd)).getText().toString());
-				double amount = Double.valueOf(((EditText)findViewById(R.id.search2_coin)).getText().toString());
+				String temp = ((EditText)findViewById(R.id.search2_usd)).getText().toString();
+				if(temp.isEmpty()||temp.equals("")){
+					showErrorMessage();
+					return;
+				}
+				double initial = Double.valueOf(temp);
+				temp = ((EditText)findViewById(R.id.search2_coin)).getText().toString();
+				if(temp.isEmpty()||temp.equals("")){
+					showErrorMessage();
+					return;
+				}
+				double amount = Double.valueOf(temp);
 				if(isInfo){
 					Var.addToCoin(id, initial, amount);
 					Var.log("Adding to coin "+name);
@@ -105,5 +116,9 @@ public class CurrencyAdderActivity extends AppCompatActivity{
 			e.printStackTrace();
 			Var.error("Error saving");
 		}
+	}
+
+	private void showErrorMessage(){
+		Toast.makeText(this,"Empty variables!",Toast.LENGTH_SHORT).show();
 	}
 }
