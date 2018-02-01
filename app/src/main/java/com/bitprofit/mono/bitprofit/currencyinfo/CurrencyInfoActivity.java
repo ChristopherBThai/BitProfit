@@ -26,7 +26,7 @@ import com.bitprofit.mono.bitprofit.main.MainActivity;
 public class CurrencyInfoActivity extends AppCompatActivity{
 
 	private String name;
-	private String holding,profit;
+	private String holding,profit,coins;
 	private int color;
 	private int id;
 
@@ -41,6 +41,7 @@ public class CurrencyInfoActivity extends AppCompatActivity{
 		Var.Coin c = Var.getCoin(id);
 		name = Var.toFormatName(c.name);
 		holding = getIntent().getStringExtra(Var.INTENT_CURRENCY_INFO_HOLDING);
+		coins = ""+c.coins;
 		profit = getIntent().getStringExtra(Var.INTENT_CURRENCY_INFO_PROFIT);
 		color = Integer.parseInt(getIntent().getStringExtra(Var.INTENT_CURRENCY_INFO_COLOR));
 		Var.log("Info for "+id+" "+name);
@@ -52,6 +53,7 @@ public class CurrencyInfoActivity extends AppCompatActivity{
 	private void initInfo(){
 		((TextView)findViewById(R.id.info_holding)).setText(holding);
 		((TextView)findViewById(R.id.info_profit)).setText(profit);
+		((TextView)findViewById(R.id.info_coin)).setText(coins);
 		((TextView)findViewById(R.id.info_profit)).setTextColor(color);
 		(new FetchCurrencyInfo(name,CurrencyInfoActivity.this)).execute();
 		(new FetchCurrencyInfoImage(name,(ImageView)findViewById(R.id.info_icon))).execute();
