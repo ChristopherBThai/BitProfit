@@ -1,4 +1,0 @@
-Bitcoin-BTC
-Litecoin-LTC
-Dogecoin-DOGE
-Test coin-TEST
